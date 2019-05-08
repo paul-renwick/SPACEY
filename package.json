@@ -4,8 +4,14 @@
   "description": "React Redux using express",
   "main": "server/index.js",
   "scripts": {
-    "start": "webpack && node server",
-    "dev": "nodemon --watch server & webpack --watch"
+    "start": "run-p start:*",
+    "start:server": "node server",
+    "start:client": "webpack",
+    "dev": "run-p dev:*",
+    "dev:server": "nodemon server",
+    "dev:client": "webpack --watch",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "test": "jest --watchAll"
   },
   "author": "EDA",
   "license": "ISC",
@@ -14,7 +20,7 @@
       "@babel/preset-env",
       "@babel/preset-react"
     ],
-     "plugins": [
+    "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ]
@@ -36,6 +42,11 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "enzyme": "^3.9.0",
+    "express": "^4.16.4",
+    "jest": "^24.8.0",
+    "knex": "^0.16.5",
+    "superagent": "^5.0.5",
+    "supertest": "^4.0.2"
   }
 }
