@@ -10,7 +10,7 @@
     "dev": "run-p dev:*",
     "dev:server": "nodemon server",
     "dev:client": "webpack --watch",
-    "knex": "knex --knexfile",
+    "knex": "knex --knexfile server/db/knexfile.js",
     "db-reset": "run-s db:*",
     "db:delete": "rm -f server/db/dev.sqlite3",
     "db:migrate": "npm run knex migrate:latest",
