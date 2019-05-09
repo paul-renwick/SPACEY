@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-react-redux",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "React Redux using express",
   "main": "server/index.js",
   "scripts": {
@@ -11,6 +11,11 @@
     "dev:server": "nodemon server",
     "dev:client": "webpack --watch",
     "knex": "knex --knexfile server/db/knexfile.js",
+    "db-reset": "run-s db:*",
+    "db:delete": "rm -f server/db/dev.sqlite3",
+    "db:migrate": "npm run knex migrate:latest",
+    "db:seed": "npm run knex seed:run",
+    "postinstall": "run-s db:migrate db:seed",
     "test": "jest --watchAll"
   },
   "author": "EDA",
@@ -26,17 +31,30 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
+    "cheerio": "^1.0.0-rc.3",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jest": "^24.7.1",
+    "nock": "^10.0.6",
     "nodemon": "^1.18.11",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "react-circular-progressbar": "^1.2.1",
     "react-dom": "^16.8.6",
-    "react-redux": "^7.0.2",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "supertest": "^4.0.2",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
     "webpack-dev-server": "^3.3.1"
@@ -49,6 +67,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.16.5",
     "libsodium-wrappers": "^0.7.4",
+    "sqlite3": "^4.0.7",
     "superagent": "^5.0.5",
     "supertest": "^4.0.2"
   }
