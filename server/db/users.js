@@ -10,7 +10,7 @@ module.exports = {
 
 function getUser (id, db = connection) {
   return db('users')
-    .where('id, id')
+    .where(id, 'userId')
     .first()
 }
 
