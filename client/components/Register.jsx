@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 
 class Register extends React.Component {
   state = {
@@ -36,7 +36,7 @@ class Register extends React.Component {
           onChange={this.onChange}
         />
 
-        <Link to ='/' ><Button type='button' onClick={() => this.handleClick()}>Register</Button></Link>
+        <Link to ='/' ><button type='button' onClick={() => this.handleClick()}>Register</button></Link>
       </div>
 
       </React.Fragment>
