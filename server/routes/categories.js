@@ -23,8 +23,8 @@ router.put('categories/:id', (req, res) => {
   const id = req.params.id
   const submission = {
     userId: id,
-    date_modified: new Date(),
-    evidence: req.body.evidence
+    categoryName: req.body.categoryName
+
   }
   db.submitCategories(submission)
     .then(() => res.json({ notice: 'Evidence has been updated!' }))

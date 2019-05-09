@@ -22,8 +22,8 @@ router.put('cards/:id', (req, res) => {
   const id = req.params.id
   const submission = {
     userId: id,
-    date_modified: new Date(),
-    evidence: req.body.evidence
+    question: req.body.question,
+    answer: req.body.answer
   }
   db.submitCards(submission)
     .then(() => res.json({ notice: 'evidence has been updated! ' }))
