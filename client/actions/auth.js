@@ -80,7 +80,7 @@ export function register (newUser) {
 export function signIn (user, confirmSuccess) {
   return (dispatch) => {
     dispatch(requestSignIn())
-    request('post', '/auth/signin', user)
+    request('post', '/dashboard', user)
       .then(res => {
         const token = saveAuthToken(res.body.token)
         dispatch(receiveSignIn(res.body))

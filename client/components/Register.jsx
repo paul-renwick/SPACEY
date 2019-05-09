@@ -11,7 +11,15 @@ class Register extends React.Component {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      confirm: '',
+      match: false,
+      showMatch: false
+    }
+    this.styles = {
+      match: {
+        color: 'red'
+      }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -33,17 +41,16 @@ class Register extends React.Component {
     const { register } = this.props
     const { username, password, confirm } = this.state
     register(username, password, confirm)
-    e.preventDefault()
   }
 
   render () {
-    const { username, password } = this.state
+    const { username, password, confirm, match, showMatch } = this.state
     return (
       <React.Fragment>
         <h1>Register</h1>
         <div className='register'>
           <input name='username'
-            placeholder='username'
+            placeholder='Username'
             value={username}
             onChange={this.handleChange}
           />
@@ -55,7 +62,13 @@ class Register extends React.Component {
             onChange={this.handleChange}
           />
           <br /><br />
-          <Link to ='/' ><button variant="info" type='button' onClick={() => this.handleSubmit()}>Register</button></Link>
+          <input name='confirm'
+            type='password' placeholder='Confirm password'
+            onChange={this.handleChange} value={confirm} />
+
+          {showMatch && !match && <span style={this.styles.match}>* Entered passwords do not match.</span>}
+          <br /><br />
+          <Link to ='/' ><button variant="info" type='button' onClick={() => this.handleSubmit}>Register</button></Link>
         </div>
 
       </React.Fragment>
