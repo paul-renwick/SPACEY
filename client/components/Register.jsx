@@ -21,22 +21,22 @@ class Register extends React.Component {
   render () {
     return (
       <React.Fragment>
-        
+        <h1>Register</h1>
           <div className='register'>
             <input name='username'
               placeholder='username'
               value={this.state.username}
               onChange={this.onChange}
             />
-
+            <br /><br />
             <input name='password'
               type='password'
               placeholder='Password'
               value={this.state.password}
               onChange={this.onChange}
             />
-
-            <Link to ='/' ><button type='button' onClick={() => this.handleClick()}>Register</button></Link>
+            <br /><br />
+            <Link to ='/' ><button variant="info" type='button' onClick={() => this.handleClick()}>Register</button></Link>
           </div>
         
       </React.Fragment>
