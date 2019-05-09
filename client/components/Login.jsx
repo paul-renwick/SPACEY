@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 class Login extends React.Component {
   state = {
@@ -25,15 +27,17 @@ class Login extends React.Component {
             value={this.state.username} 
             onChange={this.handleChange}
           /> 
-
+        <br />  <br />
           <input name ='password' 
             type= 'password' 
             placeholder = 'password' 
             value={this.state.password} 
             onChange={this.handleChange}
-            />
+          />
+        <br />  <br />
      
-     
+            <button type='button' onClick={() => this.handleClick()}> Login </button> <br />  <br />
+            <Link to ='/register'>   <button onClick={() => this.handleClick()}>Register</button></Link>
 
       </React.Fragment>
     )
