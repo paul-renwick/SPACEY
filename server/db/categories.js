@@ -8,6 +8,6 @@ module.exports = {
 
 function getCategories (db = connection) {
   return db('categories')
-    .join('categories_id', 'user_id', 'categories_name')
-    .select('categories.id', 'catogories.id', 'categories.title')
+    .join('userId')
+    .select('category.id', 'category.name')
 }
