@@ -22,7 +22,8 @@ class Login extends React.Component {
     const { username, password } = this.state
     const goToDashboard = () => this.props.history.push('/dashboard')
     this.props.signIn(username, password, goToDashboard)
-}
+    e.preventDefault()
+  }
 
   render () {
     const { username, password } = this.state
@@ -43,7 +44,7 @@ class Login extends React.Component {
         />
         <br />  <br />
 
-        <Link to='/dashboard'><button type='button' onClick={() => this.handleSubmit}> Login </button></Link> <br />  <br />
+        <button type='button' onClick={this.handleSubmit}> Login </button> <br />  <br />
         <Link to ='/register'>   <button onClick={() => this.handleChange}>Register</button></Link>
       </React.Fragment>
     )
