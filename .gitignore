@@ -1,4 +1,4 @@
 node_modules
 bundle*
-*.sqlite
+dev.sqlite3
 .env
