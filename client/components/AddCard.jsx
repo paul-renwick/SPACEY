@@ -10,10 +10,18 @@ const AddCard = (props) => {
       New Card:
           <input type="text" name="" />
         </label>
-        <input type="add" value="Add New Card" />
-        <input type="question" value="Add A Question" />
-        <input type="answer" value="Add An Answer" />
-        <button type="submit" value="Submit" />
+        <label>
+          Add A Question:
+          <input type="text" name="" />
+        </label>
+        <label>
+          Add An Answer:
+          <input type="text" name="" />
+        </label>
+        <button>
+          Submit
+          <button type="text" name="" />
+        </button>
       </form>
     </div>
   )
