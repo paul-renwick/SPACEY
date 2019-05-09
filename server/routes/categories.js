@@ -19,6 +19,16 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(500).send(err.message))
 })
 
+router.post('/' (req, res) => {
+  db.addCategory(req.body)
+  .then(category => {
+    res.send(category)
+  })
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
+})
+
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const submission = {
