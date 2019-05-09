@@ -69,6 +69,7 @@ class Register extends React.Component {
           {showMatch && !match && <span style={this.styles.match}>* Entered passwords do not match.</span>}
           <br /><br />
           <Link to ='/' ><button variant="info" type='button' onClick={() => this.handleSubmit}>Register</button></Link>
+          <Link to ='/' ><button>Return to Login</button></Link>
         </div>
 
       </React.Fragment>
