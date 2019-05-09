@@ -20,7 +20,6 @@ const AddCard = (props) => {
         </label>
         <button>
           Submit
-          <button type="text" name="" />
         </button>
       </form>
     </div>
