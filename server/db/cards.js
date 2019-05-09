@@ -23,5 +23,5 @@ function getCard (id, db = connection) {
 function submitCard (submission, db = connection) {
   return db('cards')
     .where({ usersId: submission.userId })
-    .update({ evidence: submission.evidence, date_modified: submission.date_modified })
+    .update({ evidence: submission.evidence })
 }
