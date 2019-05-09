@@ -12,13 +12,13 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('cards/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id
   db.getCard(id)
     .then(card => res.send(card))
     .catch(err => res.status(500).send(err.message))
 })
-router.put('cards/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id
   const submission = {
     userId: id,

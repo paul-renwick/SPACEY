@@ -12,14 +12,14 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('categories/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id
   db.getCategory(id)
     .then(category => res.send(category))
     .catch(err => res.status(500).send(err.message))
 })
 
-router.put('categories/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id
   const submission = {
     userId: id,
