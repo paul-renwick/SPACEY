@@ -31,9 +31,10 @@ class Login extends React.Component {
             placeholder = 'password' 
             value={this.state.password} 
             onChange={this.handleChange}
-            />
+          />
      
-     
+            <Button type='button' onClick={() => this.handleClick()}> Login </Button>
+            <Link to ='/register'><Button onClick={() => this.handleClick()}>Register</Button></Link>
 
       </React.Fragment>
     )
