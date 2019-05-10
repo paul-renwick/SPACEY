@@ -11,8 +11,8 @@ module.exports = {
 
 function getCategories (db = connection) {
   return db('categories')
-    .join('users', 'users.userId', 'categories.userId')
-    .select('categories.categoryId', 'categories.categoryName')
+    .join('users', 'users.id', 'categories.userId')
+    .select('categories.id', 'categories.categoryName')
 }
 
 function getCategory (id, db = connection) {
