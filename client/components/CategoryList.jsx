@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getCategories } from '../api/categories'
+import { getCategories, addNewCategory } from '../api/categories'
 
 class CategoryList extends React.Component {
   componentDidMount () {
     this.props.dispatch(getCategories())
+  }
+
+  handleSubmit () {
+    this.props.dispatch(addNewCategory())
   }
 
   render () {
@@ -18,9 +22,9 @@ class CategoryList extends React.Component {
         <form>
           <label>
             New Category:
-            <input type="text" name="" />
+            <input id="addCategory" type="text" name="" />
           </label>
-          <input type="submit" value="Submit New Category" />
+          <input type="submit" value="Submit" onClick={() => this.handleSubmit()}/>
         </form>
 
       </div>
