@@ -10,3 +10,5 @@ exports.seed = function (knex, Promise) {
       ])
     })
 }
+// add another col e.g col1, col2 for seeds so it can ref that particular column
+//clarify with emily
