@@ -1,48 +1,61 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { requestCategories, receiveCategories } from '../actions/categories'
 
-import CategoryListItem from './CategoryListItem'
+import { getCategories } from '../api/categories'
 
-const CategoryList = (props) => {
-  return (
-    <div>
-      <h1>Categories:</h1>
-      {props.categories.map(category => {
-        return (
-          <CategoryListItem key={category.CategoryId} name={category.CategoryName} />
-        )
-      })}
+class CategoryList extends React.Component {
+  componentDidMount () {
+    this.props.dispatch(getCategories())
+  }
 
-      <form>
-        <label>
+  render () {
+    return (
+      <div>
+        <h1>Categories:</h1>
+        <p>{this.props.categories}</p>
+        <form>
+          <label>
             New Category:
-          <input type="text" name="" />
-        </label>
-        <input type="submit" value="Submit New Category" />
-      </form>
+            <input type="text" name="" />
+          </label>
+          <input type="submit" value="Submit New Category" />
+        </form>
 
-    </div>
+      </div>
 
-  )
+    )
+  }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
   return {
     categories: state.categories
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: () => {
-      dispatch(requestCategories())
-      dispatch(receiveCategories())
-    }
-  }
-}
+export default connect(mapStateToProps)(CategoryList)
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategoryList)
+// function CategoryList (props) {
+//   const { name } = props.categories
+//   // const { dispatch } = props
+
+
+//   return (
+//     <div>
+//       <h1>Categories:</h1>
+//       <p>{name}</p>
+//       <form>
+//         <label>
+//             New Category:
+//           <input type="text" name="" />
+//         </label>
+//         <input type="submit" value="Submit New Category" />
+        
+//       </form>
+
+//     </div>
+
+//   )
+// }
+
+// export default connect()(CategoryList)
