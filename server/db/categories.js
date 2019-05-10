@@ -5,7 +5,8 @@ const connection = require('knex')(config)
 module.exports = {
   getCategories,
   submitCategories,
-  getCategory
+  getCategory,
+  addCategory
 }
 
 function getCategories (db = connection) {
@@ -18,6 +19,11 @@ function getCategory (id, db = connection) {
   return db('categories')
     .where('userId', id)
     .first()
+}
+
+function addCategory (newCategory, db = connection) {
+  return db('category')
+    .insert(newCategory)
 }
 
 function submitCategories (submission, db = connection) {

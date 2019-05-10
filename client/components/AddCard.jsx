@@ -1,39 +1,42 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { requestCards, receiveCards } from '../actions/cards'
 
-const AddCard = (props) => {
-  return (
-    <div>
-      <form>
-        <label>
-      New Card:
-          <input type="text" name="" />
-        </label>
-        <input type="add" value="Add New Card" />
-        <input type="question" value="Add A Question" />
-        <input type="answer" value="Add An Answer" />
-        <button type="submit" value="Submit" />
-      </form>
-    </div>
-  )
-}
+class AddCard extends React.Component {
+  state = {
+    question: '',
+    answer: ''
+  }
 
-const mapStateToProps = (state) => {
-  return {
-    cards: state.cards
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleClick = e => {
+    e.preventDefault()
+  }
+
+  render () {
+    return (
+      <React.Fragment>
+        <h1>Add Card</h1>
+        <input name='question'
+          placeholder='question'
+          value={this.state.question}
+          onChange={this.handleChange}
+        />
+        <br /> <br />
+        <input name='answer'
+          placeholder='answer'
+          value={this.state.answer}
+          onChange={this.handleChange}
+        />
+        <br /> <br />
+
+        <button type='button' onClick={() => this.handleClick()}>Submit</button>
+
+      </React.Fragment>
+    )
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: () => {
-      dispatch(requestCards())
-    }
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddCard)
+export default AddCard
