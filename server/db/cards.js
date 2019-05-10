@@ -11,8 +11,8 @@ module.exports = {
 
 function getCards (db = connection) {
   return db('cards')
-    .join('users', 'users.userId', 'cards.userId')
-    .select('card.cardId', 'card.cardQuestion', 'card.cardAnswer')
+    .join('users', 'users.userId', 'cards.cardId')
+    .select('cards.cardId', 'cards.question', 'cards.answer' )
 }
 
 function getCard (id, db = connection) {

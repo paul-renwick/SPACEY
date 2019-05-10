@@ -28,6 +28,7 @@ router.get('/:id', (req, res) => {
     .then(card => res.send(card))
     .catch(err => res.status(500).send(err.message))
 })
+
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const submission = {
