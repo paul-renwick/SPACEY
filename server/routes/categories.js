@@ -21,8 +21,8 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   db.addCategory(req.body)
-    .then(category => {
-      res.send(category)
+    .then(categories => {
+      res.send(categories)
     })
     .catch(err => {
       res.status(500).send(err.message)

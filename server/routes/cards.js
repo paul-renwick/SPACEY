@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   db.addCard(req.body)
-    .then(card => {
-      res.send(card)
+    .then(cards => {
+      res.send(cards)
     })
     .catch(err => {
       res.status(500).send(err.message)

@@ -22,7 +22,7 @@ function getCategory (id, db = connection) {
 }
 
 function addCategory (newCategory, db = connection) {
-  return db('category')
+  return db('categories')
     .insert(newCategory)
 }
 
