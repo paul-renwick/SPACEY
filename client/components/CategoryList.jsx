@@ -12,7 +12,9 @@ class CategoryList extends React.Component {
     return (
       <div>
         <h1>Categories:</h1>
-        <p>{this.props.categories}</p>
+        {this.props.categories.map(category => {
+          return <p key={category.categoryId}>{category.categoryName}</p>
+        })}
         <form>
           <label>
             New Category:
@@ -39,7 +41,6 @@ export default connect(mapStateToProps)(CategoryList)
 //   const { name } = props.categories
 //   // const { dispatch } = props
 
-
 //   return (
 //     <div>
 //       <h1>Categories:</h1>
@@ -50,7 +51,7 @@ export default connect(mapStateToProps)(CategoryList)
 //           <input type="text" name="" />
 //         </label>
 //         <input type="submit" value="Submit New Category" />
-        
+
 //       </form>
 
 //     </div>
