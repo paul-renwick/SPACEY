@@ -12,7 +12,7 @@ module.exports = {
 function getCards (db = connection) {
   return db('cards')
     .join('users', 'users.userId', 'cards.userId')
-    .select()
+    .select('card.cardId', 'card.cardQuestion', 'card.cardAnswer')
 }
 
 function getCard (id, db = connection) {
