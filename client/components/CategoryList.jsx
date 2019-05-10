@@ -36,27 +36,3 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(CategoryList)
-
-// function CategoryList (props) {
-//   const { name } = props.categories
-//   // const { dispatch } = props
-
-//   return (
-//     <div>
-//       <h1>Categories:</h1>
-//       <p>{name}</p>
-//       <form>
-//         <label>
-//             New Category:
-//           <input type="text" name="" />
-//         </label>
-//         <input type="submit" value="Submit New Category" />
-
-//       </form>
-
-//     </div>
-
-//   )
-// }
-
-// export default connect()(CategoryList)
