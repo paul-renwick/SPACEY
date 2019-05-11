@@ -51,12 +51,15 @@ class Register extends React.Component {
                 onChange={this.handleChange}
               />
               <br /><br />
-              <input name='confirm'
+              <input style={{ textAlign: 'center', borderColor:'lightblue' }}  
+                name='confirm'
                 type='password' placeholder='Confirm password'
                 onChange={this.handleChange} value={confirm} />
+
                 {showMatch && !match && <span style={this.styles.match}>* Entered passwords do not match.</span>}
               <br /><br />
-              <Link to ='/' ><Button variant="info" type='button' onClick={this.handleSubmit}>Register</Button></Link>
+              <Link to ='/' ><Button type='button' onClick={this.handleSubmit}>Register</Button></Link>
+              <a> </a>
               <Link to ='/' ><Button>Return to Login</Button></Link>
           </div>
         </div>
