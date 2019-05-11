@@ -18,6 +18,7 @@ class Login extends React.Component {
   }
 
   render () {
+    const idNum = 1
     return (
       <React.Fragment>
         <h1>Login</h1>
@@ -35,7 +36,7 @@ class Login extends React.Component {
         />
         <br />  <br />
 
-        <Link to='/dashboard'><button type='button' onClick={() => this.handleClick()}> Login </button></Link> <br />  <br />
+        <Link to={`/categorylist/${idNum}`}><button type='button' onClick={() => this.handleClick()}> Login </button></Link> <br />  <br />
         <Link to ='/register'>   <button onClick={() => this.handleClick()}>Register</button></Link>
 
       </React.Fragment>

@@ -14,7 +14,7 @@ class CategoryList extends React.Component {
       <div>
         <h1>Categories:</h1>
         {this.props.categories.map(category => {
-          return <p key={category.id}><Link to={`/dashboard/${category.id}`}>{category.categoryName}</Link></p>
+          return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
         })}
         <form>
           <label>
