@@ -6,7 +6,8 @@ module.exports = {
   getCard,
   getCards,
   submitCards,
-  addCard
+  addCard,
+  deleteCard
 }
 
 function getCards (db = connection) {
@@ -30,4 +31,10 @@ function submitCards (submission, db = connection) {
   return db('cards')
     .where({ usersId: submission.userId })
     .insert([{ question: submission.question }, { answer: submission.answer }])
+}
+
+function deleteCard (id) {
+  return db('cards')
+    .where('id', id)
+    .del()
 }

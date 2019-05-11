@@ -29,16 +29,22 @@ router.post('/', (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
-  const id = req.params.id
-  const submission = {
-    userId: id,
-    categoryName: req.body.categoryName
+// router.put('/:id', (req, res) => {
+//   const id = req.params.id
+//   const submission = {
+//     userId: id,
+//     categoryName: req.body.categoryName
 
-  }
-  db.submitCategories(submission)
-    .then(() => res.json({ notice: 'Evidence has been updated!' }))
-    .catch(err => res.status(500).send(err.message))
+//   }
+//   db.submitCategories(submission)
+//     .then(() => res.json({ notice: 'Evidence has been updated!' }))
+//     .catch(err => res.status(500).send(err.message))
+// })
+
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteCategory(id)
+    .then(() => res.status(200).send(`deleted category ${id}!`))
 })
 
 module.exports = router
