@@ -7,6 +7,8 @@ export const REQUEST_SIGNIN = 'REQUEST_SIGNIN'
 export const RECEIVE_SIGNIN = 'RECEIVE_SIGNIN'
 export const REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS'
 export const RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS'
+export const REQUEST_UPDATE_PROFILE = 'REQUEST_UPDATE_PROFILE'
+export const RECEIVE_UPDATE_PROFILE = 'RECEIVE_UPDATE_PROFILE'
 export const REQUEST_USER_REGISTRATION = 'REQUEST_USER_REGISTRATION'
 export const RECEIVE_USER_REGISTRATION = 'RECEIVE_USER_REGISTRATION'
 
@@ -53,6 +55,18 @@ const receiveUserDetails = (userDetails) => {
   return {
     type: RECEIVE_USER_DETAILS,
     userDetails
+  }
+}
+
+const requestUpdateProfile = () => {
+  return {
+    type: REQUEST_UPDATE_PROFILE
+  }
+}
+
+const receiveUpdateProfile = () => {
+  return {
+    type: RECEIVE_UPDATE_PROFILE
   }
 }
 
@@ -105,6 +119,21 @@ export function getUserDetails (userId) {
     request('get', `/users/${userId}`)
       .then(res => {
         dispatch(receiveUserDetails(res.body))
+        dispatch(clearError())
+      })
+      .catch((err) => {
+        dispatch(showError(err.message, 'An unexpected error has occurred.'))
+      })
+  }
+}
+
+export function updateProfile (profile) {
+  return (dispatch) => {
+    dispatch(requestUpdateProfile())
+    request('put', `/users/${profile.id}`, profile)
+      .then(res => {
+        dispatch(receiveUpdateProfile())
+        dispatch(getUserDetails(profile.id))
         dispatch(clearError())
       })
       .catch((err) => {

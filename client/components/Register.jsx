@@ -25,26 +25,8 @@ class Register extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange (e) {
-    const { name, value } = e.target
-    let match = this.state.match
-    match = name === 'password' ? value === this.state.confirm : match
-    match = name === 'confirm' ? value === this.state.password : match
-    this.setState({
-      [name]: value,
-      showMatch: this.state.showMatch || name === 'confirm',
-      match: match
-    })
-  }
-
-  handleSubmit (e) {
-    const { register } = this.props
-    const { username, password, confirm } = this.state
-    register(username, password, confirm)
-  }
-
   render () {
-    const { username, password, confirm, match, showMatch } = this.state
+    const { username, password, confirm, showMatch, match } = this.state
     return (
       <React.Fragment>
         <h1>Register</h1>
@@ -73,6 +55,25 @@ class Register extends React.Component {
         </div>
       </React.Fragment>
     )
+  }
+
+  handleChange (e) {
+    const { name, value } = e.target
+    let match = this.state.match
+    match = name === 'password' ? value === this.state.confirm : match
+    match = name === 'confirm' ? value === this.state.password : match
+    this.setState({
+      [name]: value,
+      showMatch: this.state.showMatch || name === 'confirm',
+      match: match
+    })
+  }
+
+  handleSubmit (e) {
+    const { register } = this.props
+    const { username, password, confirm } = this.state
+    register(username, password, confirm)
+    e.preventDefault()
   }
 }
 

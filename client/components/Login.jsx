@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+
 import { signIn } from '../actions/auth'
 import { clearError } from '../actions/error'
-import { withRouter, Link } from 'react-router-dom'
 
 class Login extends React.Component {
   state = {
@@ -20,8 +21,8 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     const { username, password } = this.state
-    const goToDash = () => this.props.history.push('/dashboard')
-    this.props.signIn(username, password, goToDash)
+    const goToDashboard = () => this.props.history.push('/dashboard')
+    this.props.signIn(username, password, goToDashboard)
     e.preventDefault()
   }
 
@@ -29,24 +30,24 @@ class Login extends React.Component {
     const { username, password } = this.state
     return (
       <React.Fragment>
-        <h1>Login</h1>
-        <input name='username'
-          placeholder ='username'
-          value={username}
-          onChange={this.handleChange}
-        />
-        <br />  <br />
-        <input name ='password'
-          type= 'password'
-          placeholder = 'password'
-          value={password}
-          onChange={this.handleChange}
-        />
-        <br />  <br />
+      <h1>Login</h1>
+      <input name='username'
+        placeholder ='username'
+        value={username}
+        onChange={this.handleChange}
+      />
+      <br />  <br />
+      <input name ='password'
+        type= 'password'
+        placeholder = 'password'
+        value={password}
+        onChange={this.handleChange}
+      />
+      <br />  <br />
+      <button type='button' onClick={this.handleSubmit}> Login </button> <br />  <br />
+      <Link to ='/register'>   <button onClick={() => this.handleChange}>Register</button></Link>
+    </React.Fragment>
 
-        <button type='button' onClick={this.handleSubmit}> Login </button> <br />  <br />
-        <Link to ='/register'>   <button onClick={() => this.handleChange}>Register</button></Link>
-      </React.Fragment>
     )
   }
 }

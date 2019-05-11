@@ -1,14 +1,14 @@
 const express = require('express')
+
 const {
   userExists,
   getUserByName,
   createUser } = require('../db/users')
-const hash = require('../auth/hash')
 const token = require('../auth/token')
+const hash = require('../auth/hash')
 
 const router = express.Router()
 
-// Register user route at /api/v1/auth/register
 router.post('/register', register, token.issue)
 router.post('/signin', signIn, token.issue)
 
@@ -23,13 +23,12 @@ function register (req, res, next) {
       createUser(req.body.username, req.body.password)
         .then(() => next())
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(400).send({
-        errorType: err.message
+        errorType: 'DATABASE_ERROR'
       })
     })
 }
-// "DATABASE_ERROR"
 
 function signIn (req, res, next) {
   getUserByName(req.body.username)
