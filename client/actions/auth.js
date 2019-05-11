@@ -72,7 +72,7 @@ export function register (newUser) {
         if (res && res.errorType === 'USERNAME_UNAVAILABLE') {
           return dispatch(showError(msg))
         }
-        dispatch(showError('An unexpected error has occurred.'))
+        dispatch(showError(err.message, 'An unexpected error has occurred.'))
       })
   }
 }
@@ -80,7 +80,7 @@ export function register (newUser) {
 export function signIn (user, confirmSuccess) {
   return (dispatch) => {
     dispatch(requestSignIn())
-    request('post', '/dashboard', user)
+    request('post', '/auth/signin', user)
       .then(res => {
         const token = saveAuthToken(res.body.token)
         dispatch(receiveSignIn(res.body))
@@ -94,7 +94,7 @@ export function signIn (user, confirmSuccess) {
         if (res && res.errorType === 'INVALID_CREDENTIALS') {
           return dispatch(showError(msg))
         }
-        dispatch(showError('An unexpected error has occurred.'))
+        dispatch(showError(err.message, 'An unexpected error has occurred.'))
       })
   }
 }
@@ -107,9 +107,8 @@ export function getUserDetails (userId) {
         dispatch(receiveUserDetails(res.body))
         dispatch(clearError())
       })
-      .catch(() => {
-        dispatch(showError('An unexpected error has occurred.'))
+      .catch((err) => {
+        dispatch(showError(err.message, 'An unexpected error has occurred.'))
       })
   }
 }
-

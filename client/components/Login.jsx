@@ -20,8 +20,8 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     const { username, password } = this.state
-    const goToDashboard = () => this.props.history.push('/dashboard')
-    this.props.signIn(username, password, goToDashboard)
+    const goToDash = () => this.props.history.push('/dashboard')
+    this.props.signIn(username, password, goToDash)
     e.preventDefault()
   }
 
