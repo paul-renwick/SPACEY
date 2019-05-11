@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' 
 import { getCategories } from '../api/categories'
+import { Button } from 'react-bootstrap'
 
 class CategoryList extends React.Component {
   componentDidMount () {
@@ -14,11 +15,14 @@ class CategoryList extends React.Component {
         <div className='container is-fluid'>
 
           <h1 className='title is-1'>Categories:</h1>
-          <div className='columns is-mobile'>
+
             {this.props.categories.map(category => {
-              return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
+
+                return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
+               
+              
             })}
-          </div>
+     
           <form>
             <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
               type="text" name="newCategory" placeholder ='New Category' /> <br /> <br />
