@@ -33,7 +33,7 @@ function submitCards (submission, db = connection) {
     .insert([{ question: submission.question }, { answer: submission.answer }])
 }
 
-function deleteCard (id) {
+function deleteCard (id, db = connection) {
   return db('cards')
     .where('id', id)
     .del()

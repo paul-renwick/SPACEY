@@ -32,7 +32,7 @@ function submitCategories (submission, db = connection) {
     .where({ userId: submission.userId })
     .update({ evidence: submission.evidence, date_modified: submission.date_modified })
 }
-function deleteCategory (id) {
+function deleteCategory (id, db = connection) {
   return db('categories')
     .where('id', id)
     .del()
