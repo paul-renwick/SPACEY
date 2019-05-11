@@ -12,8 +12,14 @@ class AddCard extends React.Component {
     })
   }
 
-  handleClick = e => {
-    e.preventDefault()
+  // handleClick = e => {
+  //   e.preventDefault()
+  // }
+
+  handleSubmit (e) {
+    const { register } = this.props
+    const { username, password, confirm } = this.state
+    register(username, password, confirm)
   }
 
   render () {

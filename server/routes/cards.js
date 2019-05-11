@@ -31,12 +31,12 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  const submission = {
+  const card = {
     userId: id,
     question: req.body.question,
     answer: req.body.answer
   }
-  db.submitCards(submission)
+  db.submitCards(card)
     .then(() => res.json({ notice: 'evidence has been updated! ' }))
     .catch(err => res.status(500).send(err.message))
 })
