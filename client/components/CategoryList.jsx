@@ -18,11 +18,11 @@ class CategoryList extends React.Component {
 
             {this.props.categories.map(category => {
 
-                return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
-               
-              
-            })}
-     
+              return (
+                <Link to ={`/cardlist/${category.id}`}><Button key={category.id}>{category.categoryName}</Button><a> </a></Link>
+              )
+            })} 
+          <br /> <br />
           <form>
             <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
               type="text" name="newCategory" placeholder ='New Category' /> <br /> <br />
@@ -32,7 +32,7 @@ class CategoryList extends React.Component {
         </div>
       </React.Fragment>
       
-    )
+    ) 
   }
 }
 

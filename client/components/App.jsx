@@ -21,12 +21,6 @@ const App = () => {
           <Route path='/cardlist/:id'component={CardList} />
           <Route path='/display/:id' component={CardDisplay} />
           <Route path='/addcard' component={AddCard} />
-        {/* <Route exact path='/' component={Login} />
-        <Route path='/register' component={Register} />
-        <Route path='/categorylist/' component={Dashboard} />
-        <Route path='/cardlist/:id'component={CardList} />
-        <Route path='/display/:id' component={CardDisplay} />
-        <Route path='/addcard' component={AddCard} /> */}
         </Container>
       </Switch>
     </Router>
