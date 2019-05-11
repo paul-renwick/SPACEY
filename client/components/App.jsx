@@ -5,6 +5,7 @@ import Login from './Login'
 import Register from './Register'
 import Dashboard from './Dashboard'
 import AddCard from './AddCard'
+import CardList from './CardList'
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Login} />
         <Route path='/register' component={Register} />
-        <Route path='/dashboard' component={Dashboard} />
+        <Route exact path='/dashboard' component={Dashboard} />
+        <Route path='/dashboard/:id'component={CardList} />
         <Route path='/addcard' component={AddCard} />
       </Switch>
     </Router>

@@ -35,7 +35,7 @@ class Login extends React.Component {
         />
         <br />  <br />
 
-        <button type='button' onClick={() => this.handleClick()}> Login </button> <br />  <br />
+        <Link to='/dashboard'><button type='button' onClick={() => this.handleClick()}> Login </button></Link> <br />  <br />
         <Link to ='/register'>   <button onClick={() => this.handleClick()}>Register</button></Link>
 
       </React.Fragment>

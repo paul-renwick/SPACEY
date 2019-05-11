@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { getCategories } from '../api/categories'
 
@@ -13,7 +14,7 @@ class CategoryList extends React.Component {
       <div>
         <h1>Categories:</h1>
         {this.props.categories.map(category => {
-          return <p key={category.id}>{category.categoryName}</p>
+          return <p key={category.id}><Link to={`/dashboard/${category.id}`}>{category.categoryName}</Link></p>
         })}
         <form>
           <label>
