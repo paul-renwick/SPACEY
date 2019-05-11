@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { getCards } from '../api/cards'
 
@@ -14,14 +14,10 @@ class CardList extends React.Component {
   render () {
     return (
       <div>
-        <h1>Card List:</h1>
+        <h1>Card Display:</h1>
         {this.props.cards.map(card => {
-          if (card.categoryId == this.props.match.params.id) {
-            return <p key={card.id}>
-              <Link to={`/display/${card.id}`}>
-                {card.question}
-              </Link>
-            </p>
+          if (card.id == this.props.match.params.id) {
+            return <p key={card.id}>Q:{card.question}<br />A:{card.answer}</p>
           }
         })}
       </div>

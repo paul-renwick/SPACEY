@@ -6,6 +6,7 @@ import Register from './Register'
 import Dashboard from './Dashboard'
 import AddCard from './AddCard'
 import CardList from './CardList'
+import CardDisplay from './CardDisplay';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path='/register' component={Register} />
         <Route exact path='/dashboard' component={Dashboard} />
         <Route path='/dashboard/:id'component={CardList} />
+        <Route path='/display/:id' component={CardDisplay} />
         <Route path='/addcard' component={AddCard} />
       </Switch>
     </Router>
