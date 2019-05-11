@@ -7,7 +7,7 @@ import {
 const userDetails = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_USER_DETAILS:
-      return action.userDetails
+      return action.details
 
     case REQUEST_USER_DETAILS:
       return null

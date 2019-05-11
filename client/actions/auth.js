@@ -51,10 +51,10 @@ const requestUserDetails = () => {
   }
 }
 
-const receiveUserDetails = (userDetails) => {
+const receiveUserDetails = (details) => {
   return {
     type: RECEIVE_USER_DETAILS,
-    userDetails
+    details
   }
 }
 
@@ -119,21 +119,6 @@ export function getUserDetails (userId) {
     request('get', `/users/${userId}`)
       .then(res => {
         dispatch(receiveUserDetails(res.body))
-        dispatch(clearError())
-      })
-      .catch((err) => {
-        dispatch(showError(err.message, 'An unexpected error has occurred.'))
-      })
-  }
-}
-
-export function updateProfile (profile) {
-  return (dispatch) => {
-    dispatch(requestUpdateProfile())
-    request('put', `/users/${profile.id}`, profile)
-      .then(res => {
-        dispatch(receiveUpdateProfile())
-        dispatch(getUserDetails(profile.id))
         dispatch(clearError())
       })
       .catch((err) => {
