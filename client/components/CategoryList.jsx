@@ -22,9 +22,7 @@ class CategoryList extends React.Component {
           </label>
           <input type="submit" value="Submit New Category" />
         </form>
-
       </div>
-
     )
   }
 }
