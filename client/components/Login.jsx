@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { signIn } from '../actions/auth'
+import { clearError } from '../actions/error'
 import { Button } from 'react-bootstrap'
-
-
 
 class Login extends React.Component {
   state = {
@@ -11,16 +13,21 @@ class Login extends React.Component {
   }
 
   handleChange = e => {
+    const { name, value } = e.target
     this.setState({
-      [e.target.name]: e.target.value
+      [name]: value
     })
   }
 
-  handleClick = (e) => {
-    e.preventDefault
+  handleSubmit = e => {
+    const { username, password } = this.state
+    const goToDashboard = () => this.props.history.push('/dashboard')
+    this.props.signIn(username, password, goToDashboard)
+    e.preventDefault()
   }
 
   render () {
+    const { username, password } = this.state
     return (
       <React.Fragment>
         <div className='container is-fluid' >
@@ -30,7 +37,7 @@ class Login extends React.Component {
               <input style={{ textAlign:'center', borderColor:'lightblue' }} 
                 name='username'
                 placeholder ='username'
-                value={this.state.username}
+                value={username}
                 onChange={this.handleChange}
               />
               <br />  <br />
@@ -38,14 +45,13 @@ class Login extends React.Component {
                 name ='password'
                 type= 'password'
                 placeholder = 'password'
-                value={this.state.password}
+                value={password}
                 onChange={this.handleChange}
               />
               <br />  <br />
              
-                <Link to='/dashboard'><Button btn-space type='button' onClick={() => this.handleClick()}> Login </Button></Link> 
-                <a> </a>
-                <Link to ='/register'><Button  onClick={() => this.handleClick()}>Register</Button></Link>
+              <Button type='button' onClick={this.handleSubmit}> Login </Button> <br />  <br />
+              <Link to ='/register'>   <Button onClick={() => this.handleChange}>Register</Button></Link>
           </div>
 
         </div>
@@ -54,4 +60,22 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }),
+  signIn: PropTypes.func
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    signIn: (username, password, onSuccess) => {
+      dispatch(clearError())
+      dispatch(signIn({ username, password }, onSuccess))
+    }
+  }
+}
+
+export default withRouter(
+  connect(null, mapDispatchToProps)(Login)
+)
