@@ -12,16 +12,17 @@ import CardDisplay from './CardDisplay'
 const App = () => {
   return (
     <Router>
-      <Container style={{ textAlign: 'center' }}>
-        <Switch>
+      
+      <Switch>
+        <Container style={{ textAlign: 'center' }}>
           <Route exact path='/' component={Login} />
           <Route path='/register' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route path='/dashboard/:id'component={CardList} />
           <Route path='/display/:id' component={CardDisplay} />
           <Route path='/addcard' component={AddCard} />
-        </Switch>
-      </Container>
+        </Container>
+      </Switch>
     </Router>
   )
 }

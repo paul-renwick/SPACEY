@@ -26,7 +26,7 @@ class Login extends React.Component {
         <div className='container is-fluid' >
           <br/> <br/>
           <h1 className='title is-1'>Login</h1>
-            <div className='Login'style={{textAlign:'center'}}> 
+          <div className='Login'> 
               <input style={{ textAlign:'center', borderColor:'lightblue' }} 
                 name='username'
                 placeholder ='username'
@@ -46,8 +46,8 @@ class Login extends React.Component {
                 <Link to='/dashboard'><Button btn-space type='button' onClick={() => this.handleClick()}> Login </Button></Link> 
                 <a> </a>
                 <Link to ='/register'><Button  onClick={() => this.handleClick()}>Register</Button></Link>
-         
-            </div>
+          </div>
+
         </div>
       </React.Fragment>
     )

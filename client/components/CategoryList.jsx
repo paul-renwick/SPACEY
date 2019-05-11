@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 import { getCategories } from '../api/categories'
 
@@ -11,17 +12,20 @@ class CategoryList extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>Categories:</h1>
-        {this.props.categories.map(category => {
-          return <p key={category.id}><Link to={`/dashboard/${category.id}`}>{category.categoryName}</Link></p>
-        })}
+      <div className='container is-fluid'>
+        <h1 className='title is-1'>Categories:</h1>
+
+        <div className='columns is-mobile is-vcentered'>
+
+          {this.props.categories.map(category => {
+            return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
+          })}
+        </div>
+
         <form>
-          <label>
-            New Category:
-            <input type="text" name="" />
-          </label>
-          <input type="submit" value="Submit New Category" />
+          <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
+            type="text" name="newCategory" placeholder ='New Category' /> <br /> <br />
+          <input type="submit" value="Submit New Category" /> <br /> <br />
         </form>
 
       </div>
