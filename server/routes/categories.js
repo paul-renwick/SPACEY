@@ -41,12 +41,9 @@ router.put('/:id', (req, res) => {
     .catch(err => res.status(500).send(err.message))
 })
 
-router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  db.deleteCategory(id)
-    .then(categories => {
-      res.send(categories)
-    })
+router.delete('/', (req, res) => {
+  db.deleteCategory(req.body)
+    .then(res.redirect('/categories'))
 })
 
 module.exports = router
