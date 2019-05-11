@@ -13,7 +13,7 @@ const cardRoutes = require('./routes/cards')
 
 server.use('/api/v1/auth', authRoutes)
 server.use('/categories', categoriesRoutes)
-server.use('/users', userRoutes)
+server.use('/api/v1/users', userRoutes)
 server.use('/cards', cardRoutes)
 
 server.get('*', (req, res) => {

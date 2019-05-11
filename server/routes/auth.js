@@ -1,32 +1,57 @@
 const express = require('express')
-const { createUser } = require('../db/users')
+
+const {
+  userExists,
+  getUserByName,
+  createUser } = require('../db/users')
 const token = require('../auth/token')
+const hash = require('../auth/hash')
 
 const router = express.Router()
 
-// Register user route at /api/v1/auth/register
 router.post('/register', register, token.issue)
+router.post('/signin', signIn, token.issue)
 
 function register (req, res, next) {
-  const { username, password } = req.body
-  createUser({ username, password })
-    .then(([id]) => {
-      res.locals.userId = id // Figure out what locals means here
-      next()
-    })
-    .catch(({ message }) => {
-      // note that message is used with SQLite, but if db is changed this may need to be updated
-      if (message.includes('UNIQUE constraint failed: users.username')) {
-        return res.status(400).json({
-          ok: false,
-          message: 'Username already exists in database.'
+  userExists(req.body.username)
+    .then(exists => {
+      if (exists) {
+        return res.status(400).send({
+          errorType: 'USERNAME_UNAVAILABLE'
         })
       }
-      res.status(500).json({
-        ok: false,
-        message: "Something bad happened. We don't know why."
+      createUser(req.body.username, req.body.password)
+        .then(() => next())
+    })
+    .catch(() => {
+      res.status(400).send({
+        errorType: 'DATABASE_ERROR'
       })
     })
+}
+
+function signIn (req, res, next) {
+  getUserByName(req.body.username)
+    .then(user => {
+      return user || invalidCredentials(res)
+    })
+    .then(user => {
+      return user && hash.verify(user.hash, req.body.password)
+    })
+    .then(isValid => {
+      return isValid ? next() : invalidCredentials(res)
+    })
+    .catch(() => {
+      res.status(400).send({
+        errorType: 'DATABASE_ERROR'
+      })
+    })
+}
+
+function invalidCredentials (res) {
+  res.status(400).send({
+    errorType: 'INVALID_CREDENTIALS'
+  })
 }
 
 module.exports = router
