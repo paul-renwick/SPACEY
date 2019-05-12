@@ -17,14 +17,6 @@ export const receiveCards = (cards) => {
   }
 }
 
-// export const addCard = (card) => {
-//   return ('post', '/cards', card)
-//     .then(res => {
-//       const card = res.body
-//       dispatchEvent(addCard(card))
-//     })
-// }
-
 export function addCard (card) {
     return request('post', '/cards', card)
   }
