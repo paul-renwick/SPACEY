@@ -7,7 +7,7 @@ export default class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <CategoryList />
-        <Link to ='/' ><button variant="info" >Logout</button></Link>
+        {/* <Link to ='/' ><button variant="info" >Logout</button></Link> */}
       </React.Fragment>
     )
   }
