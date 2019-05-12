@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom' 
 import { getCategories, addCategory } from '../api/categories'
+import { Button } from 'react-bootstrap'
 
 class CategoryList extends React.Component {
   constructor (props) {
@@ -35,23 +35,23 @@ class CategoryList extends React.Component {
     const { categories } = this.props
     return (
       <React.Fragment>
-        <h1>Categories:</h1>
-        {categories.map(category => {
-          return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
-        })}
-        <form>
-          <label>
-            New Category:
-            <input name='categoryName'
-          placeholder='New Category'
-          value={this.state.categoryName}
-          onChange={this.handleChange}
-        />
-          </label>
-          <button type='button' onClick={() => this.handleSubmit()}>Add New Category</button>
-        </form>
-        </React.Fragment>
-    )
+        <div className='container is-fluid has-text-centered'>
+          <h1 className='title is-1'>Categories:</h1>
+            {categories.map(category => {
+              return (
+                <Link to ={`/cardlist/${category.id}`} key={category.id}><div><h4>{category.categoryName}</h4></div></Link>
+              )
+            })} 
+          <br /> <br />
+          <form>
+            <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
+              name="categoryName" placeholder ='New Category' value={this.state.categoryName} onChange={this.handleChange} /> <br /> <br />
+           <Button type='button' onClick={() => this.handleSubmit()}>Add New Category</Button><br /> <br />
+          </form>
+        </div>
+      </React.Fragment>
+      
+    ) 
   }
 }
 

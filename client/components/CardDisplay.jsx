@@ -12,15 +12,25 @@ class CardList extends React.Component {
   render () {
     console.log(this.props.cards)
     return (
-        <React.Fragment>
-        <h1>Card Display:</h1>
-        {this.props.cards.map(card => {
-          if (card.id == this.props.match.params.id) {
-            return <p key={card.id}>Q:{card.question}<br />A:{card.answer}</p>
-          }
-        })}
-
-      </React.Fragment>
+      <div className='container is-fluid has-text-centered'>
+        <div className='carddisplay'>
+          <h1>Card Display:</h1>
+          {this.props.cards.map(card => {
+            if (card.id == this.props.match.params.id) {
+              return (
+                <article className='message is-info' key={card.id}>
+                  <div className='message-header'>
+                    <p>{card.question}</p>
+                  </div>
+                  <div className='message-body'>
+                  {card.answer}
+                  </div>
+                </article>
+              )
+            }
+          })}
+        </div>
+      </div>
     )
   }
 }
