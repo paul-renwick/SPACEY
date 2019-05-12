@@ -1,10 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom'
 
 import { getCards } from '../api/cards'
 
-// import CardPreview from './CardPreview'
 
 class CardList extends React.Component {
   componentDidMount () {
@@ -12,6 +10,7 @@ class CardList extends React.Component {
   }
 
   render () {
+    console.log(this.props.cards)
     return (
       <div className='container is-fluid has-text-centered'>
         <div className='carddisplay'>
@@ -43,3 +42,4 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(CardList)
+

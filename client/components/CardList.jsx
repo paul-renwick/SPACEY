@@ -5,6 +5,13 @@ import { Button } from 'react-bootstrap'
 import { getCards } from '../api/cards'
 
 class CardList extends React.Component {
+  constructor (props) {
+    super(props)
+  this.state = {
+    notification: true,
+  }
+}
+
   componentDidMount () {
     this.props.dispatch(getCards())
   }
@@ -31,6 +38,7 @@ class CardList extends React.Component {
             })}
           </div>
         </div>
+        <Link to='/addCard'><button>Add Card</button></Link>
       </React.Fragment>
       
     )
@@ -44,3 +52,4 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(CardList)
+
