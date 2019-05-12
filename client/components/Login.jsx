@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     const { username, password } = this.state
-    const goToDashboard = () => this.props.history.push('/dashboard')
+    const goToDashboard = () => this.props.history.push('/categorylist')
     this.props.signIn(username, password, goToDashboard)
     e.preventDefault()
   }
