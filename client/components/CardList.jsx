@@ -16,6 +16,31 @@ class CardList extends React.Component {
     this.props.dispatch(getCards())
   }
 
+
+  notifier = () => {
+    {if (this.state.notification === true) {
+      return <p> 'Requires attention' </p>
+    } else {
+      return <p> All good</p>
+    }
+  }
+  }
+
+  checkDateCreated = () => {
+  switch (date) {
+    case  (Date.now() > date + 60):
+      return this.setState.notifcation === true
+    case (Date.now() > date + 120):
+      return this.setState.notifcation === true
+    default:
+      return this.setState.notification === false
+  }
+}
+
+{this.checkDateCreated(card.dateCreated)}
+{this.notifier()}
+
+
   render () {
     return (
       <React.Fragment>
@@ -53,3 +78,5 @@ function mapStateToProps (state) {
 
 export default connect(mapStateToProps)(CardList)
 
+//Have the state of this notifcation based on a switch statement
+//Have the switch statement go through the dateCreated property of the cards field, if the dateCreated value is > 60 then 
