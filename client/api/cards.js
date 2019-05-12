@@ -1,6 +1,8 @@
 import request from 'superagent'
 import { requestCards, receiveCards } from '../actions/cards'
 
+const cardUrl = '/cards'
+
 export function getCards () {
   return (dispatch) => {
     dispatch(requestCards())
@@ -15,4 +17,13 @@ export function getCards () {
         console.error(err)
       })
   }
+}
+
+export function addCard (card, callback) {
+  return request
+    .post(cardUrl)
+    .send(card)
+    .end((err, res) => {
+      callback(err)
+    })
 }

@@ -13,7 +13,7 @@ module.exports = {
 function getCategories (db = connection) {
   return db('categories')
     .join('users', 'users.id', 'categories.userId')
-    .select()
+    .select('categories.id', 'categories.userId', 'categories.categoryName')
 }
 
 function getCategory (id, db = connection) {
