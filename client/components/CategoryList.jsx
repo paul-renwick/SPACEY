@@ -9,11 +9,13 @@ class CategoryList extends React.Component {
     this.props.dispatch(getCategories())
   }
 
+
   render () {
+    const { categories } = this.props
     return (
       <div>
         <h1>Categories:</h1>
-        {this.props.categories.map(category => {
+        {categories.map(category => {
           return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
         })}
         <form>
@@ -30,7 +32,8 @@ class CategoryList extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    categories: state.categories
+    categories: state.categories,
+    userDetails: state.userDetails
   }
 }
 
