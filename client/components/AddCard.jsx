@@ -6,7 +6,9 @@ class AddCard extends React.Component {
     super(props)
   this.state = {
     question: '',
-    answer: ''
+    answer: '',
+    dateCreated: '',
+    categoryId: 1
   }
   this.handleChange = this.handleChange.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,7 +23,9 @@ class AddCard extends React.Component {
   handleSubmit (e) {
     const card = {
       question: this.state.question,
-      answer: this.state.answer
+      answer: this.state.answer,
+      dateCreated: Date.now(),
+      categoryId: this.state.categoryId
     }
     console.log(card)
     addCard(card)

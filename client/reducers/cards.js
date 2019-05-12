@@ -1,7 +1,6 @@
 import {
   REQUEST_CARDS,
   RECEIVE_CARDS,
-  addCard
 } from '../actions/cards'
 
 const cards = (cards = [], action) => {
