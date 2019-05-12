@@ -2,37 +2,63 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { getCategories } from '../api/categories'
+import { getCategories, addCategory } from '../api/categories'
 
 class CategoryList extends React.Component {
+  constructor (props) {
+    super(props)
+  this.state = {
+    categoryName: ''
+  }
+  this.handleChange = this.handleChange.bind(this)
+  this.handleSubmit = this.handleSubmit.bind(this)
+}
+
   componentDidMount () {
     this.props.dispatch(getCategories())
   }
 
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit (e) {
+    const newCategory = {
+      categoryName: this.state.categoryName,
+    }
+    addCategory(newCategory)
+  }
+
   render () {
+    const { categories } = this.props
     return (
-      <div>
+      <React.Fragment>
         <h1>Categories:</h1>
-        {this.props.categories.map(category => {
+        {categories.map(category => {
           return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
         })}
         <form>
           <label>
             New Category:
-            <input type="text" name="" />
+            <input name='categoryName'
+          placeholder='New Category'
+          value={this.state.categoryName}
+          onChange={this.handleChange}
+        />
           </label>
-          <input type="submit" value="Submit New Category" />
+          <button type='button' onClick={() => this.handleSubmit()}>Add New Category</button>
         </form>
-
-      </div>
-
+        </React.Fragment>
     )
   }
 }
 
 function mapStateToProps (state) {
   return {
-    categories: state.categories
+    categories: state.categories,
+    userDetails: state.userDetails
   }
 }
 

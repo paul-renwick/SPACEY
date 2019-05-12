@@ -1,6 +1,8 @@
 import request from 'superagent'
 import { requestCategories, receiveCategories } from '../actions/categories'
 
+const categoryUrl = '/categories'
+
 export function getCategories () {
   return (dispatch) => {
     dispatch(requestCategories())
@@ -15,4 +17,13 @@ export function getCategories () {
         console.error(err)
       })
   }
+}
+
+export function addCategory (category) {
+  return request
+    .post(categoryUrl)
+    .send(category)
+    .end((err, res) => {
+      (err)
+    })
 }
