@@ -45,7 +45,6 @@ class Login extends React.Component {
       <br />  <br />
       <button type='button' onClick={this.handleSubmit}> Login </button> <br />  <br />
       <Link to ='/register'>   <button onClick={() => this.handleChange}>Register</button></Link>
-      {console.log(this.state)}
     </React.Fragment>
 
     )

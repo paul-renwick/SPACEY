@@ -31,7 +31,8 @@ class CardList extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    cards: state.cards
+    cards: state.cards,
+    userDetails: state.userDetails
   }
 }
 

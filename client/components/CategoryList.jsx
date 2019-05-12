@@ -16,6 +16,7 @@ class CategoryList extends React.Component {
 
   componentDidMount () {
     this.props.dispatch(getCategories())
+    console.log(this.props.userDetails)
   }
 
   handleChange = e => {
@@ -32,12 +33,15 @@ class CategoryList extends React.Component {
   }
 
   render () {
-    const { categories } = this.props
+    const { categories, userDetails} = this.props
     return (
       <React.Fragment>
+          {console.log(userDetails)}
         <h1>Categories:</h1>
         {categories.map(category => {
+          if (category.userId === userDetails.id) {
           return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
+          }
         })}
         <form>
           <label>
@@ -57,9 +61,10 @@ class CategoryList extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    categories: state.categories,
-    userDetails: state.userDetails
+    userDetails: state.userDetails,
+    categories: state.categories
   }
 }
+
 
 export default connect(mapStateToProps)(CategoryList)
