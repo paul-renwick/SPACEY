@@ -16,7 +16,7 @@
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
     "postinstall": "run-s db:migrate db:seed",
-    "test": "jest --watchAll"
+    "test": "jest -o--coverage"
   },
   "author": "EDA",
   "license": "ISC",
@@ -42,7 +42,7 @@
     "cheerio": "^1.0.0-rc.3",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
-    "jest": "^24.7.1",
+    "jest": "^24.8.0",
     "nock": "^10.0.6",
     "nodemon": "^1.18.11",
     "npm-run-all": "^4.1.5",
@@ -64,14 +64,12 @@
     "enzyme": "^3.9.0",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
-    "jest": "^24.8.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "knex": "^0.16.5",
     "libsodium-wrappers": "^0.7.4",
     "libsodium-wrappers-sumo": "^0.7.4",
     "sqlite3": "^4.0.7",
-    "superagent": "^5.0.5",
-    "supertest": "^4.0.2"
+    "superagent": "^5.0.5"
   }
 }
