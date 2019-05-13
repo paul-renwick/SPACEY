@@ -6,13 +6,14 @@ module.exports = {
   getCard,
   getCards,
   submitCards,
-  addCard
+  addCard,
+  updateCard
 }
 
 function getCards (db = connection) {
   return db('cards')
     .join('categories', 'categories.id', 'cards.categoryId')
-    .select('cards.id', 'cards.categoryId', 'cards.question', 'cards.answer', 'cards.dateCreated')
+    .select('cards.id', 'cards.categoryId', 'cards.question', 'cards.answer', 'cards.dateCreated', 'cards.check1', 'cards.check2', 'cards.check3' )
 }
 
 function getCard (id, db = connection) {
@@ -31,3 +32,11 @@ function submitCards (submission, db = connection) {
     .where({ usersId: submission.userId })
     .insert([{ question: submission.question }, { answer: submission.answer }])
 }
+
+function updateCard (newCardInfo, id, db = connection) {
+  return db('cards')
+  .where('userdId', id)
+  // .update(newCardInfo)
+  .update({check1: card.check1, check2: card.check2, check3: card.check3})
+  .select()
+} //THIS WILL PROBABLY NOT WORK, PLACEHOLDER

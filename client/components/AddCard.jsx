@@ -28,7 +28,6 @@ class AddCard extends React.Component {
       dateCreated: Date.now(),
       categoryId: this.state.categoryId
     }
-    console.log(card)
     addCard(card)
   }
 
@@ -53,7 +52,6 @@ class AddCard extends React.Component {
               <br /> <br />
               <Button type='button' onClick={() => this.handleSubmit()}>Submit</Button>
           </form>
-            
         </div>
         
       </React.Fragment>

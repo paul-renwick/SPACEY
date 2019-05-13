@@ -19,9 +19,9 @@ class CardList extends React.Component {
 
   notifier = () => {
     {if (this.state.notification === true) {
-      return <p> 'Requires attention' </p>
+      return <img src='/images/tick.png'></img>
     } else {
-      return <p> All good</p>
+      return <img src='/images/exclamation.png'></img>
     }
   }
   }
@@ -37,8 +37,8 @@ class CardList extends React.Component {
   }
 }
 
-{this.checkDateCreated(card.dateCreated)}
-{this.notifier()}
+// {this.checkDateCreated(card.dateCreated)}
+// {this.notifier()}
 
 
   render () {
@@ -54,7 +54,6 @@ class CardList extends React.Component {
                     <article className='message is-info' key={card.id}>
                       <div className='message-header'>
                         <p>{card.question}</p>
-                        <button className='date'>date to study:{card.dateCreated}</button>
                       </div>
                     </article> 
                   </Link>

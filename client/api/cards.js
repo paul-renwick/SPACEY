@@ -27,3 +27,12 @@ export function addCard (card, callback) {
       callback(err)
     })
 }
+
+export function updateCard (card, callback) {
+  return request
+  .update(cardUrl) // CHECK THIS, WILL NOT WORK CURRENTLY
+  .send(card)
+  .end((err, res) => {
+    callback(err)
+  })
+}
