@@ -1,20 +1,28 @@
 const request = require('supertest')
 
+jest.mock('../../../server/db/categories', () => ({
+  getCategories: () => Promise.resolve([
+    { id: 1, userId: 1, categoryName: 'Maths' },
+    { id: 2, userId: 1, categoryName: 'Physics' },
+    { id: 3, userId: 1, categoryName: 'English' },
+    { id: 4, userId: 2, categoryName: 'Javascript' },
+    { id: 5, userId: 2, categoryName: 'Geometry' }
+])
+}))
+
+jest.mock('../../../server/db/categories', () => ({
+  getCategory: (id) => Promise.resolve([
+  { id: 1, userId: 1, categoryName: 'Maths' }
+])
+}))
+
 const server = require('../../../server/server')
-const db = require('../../../server/db/categories')
-
-// jest.mock('../../../server/db/categories')
-
-// beforeEach(() => {
-//   db.reset()
-//   jest.resetModules()
-// })
 
 test('GET/categories returns all 5 categories', () => {
   request(server)
   .get('/categories')
   .then(res => {
-    expect(res.body).toHaveLength(5)
+    expect(res.body.categories).toHaveLength(5)
   })
 })
 
@@ -28,24 +36,33 @@ test('GET/categories returns all 5 categories', () => {
 //     })
 // })
 
-
-
-test('/category/:id sends back a 200 status', (req, res) => {
+test('/categories/:id status', () => {
   request(server)
-  .get('category/:id')
-  .expect(200)
+    .get('/categories/1')
+    .expect(200)
+    .then(res => {
+      expect(res.body).toHaveLength(1)
+    })
+})
+
+test('POST / add a new category', () => {
+  request(server)
+  .post('/categories')
+  .send({name:'history', userId:2})
   .then(res => {
-    expect(res.body.name).toHaveLength()
+    expect(res.body.categories).toHaveLength()
   })
+
 })
 
 
+test('PUT / updates a category', () => {
+const categoryName = 'history'
+return request(server)
+.put('/categories')
+.send({userId:2, name: categoryName})
+.then(res => {
+  expect(res.body.categories[1].name).toBe(newName)
+})
 
-test('/categories/:id sends back a 200 status', () => {
-  request(server)
-    .get('/categories/:id')
-    .expect(200)
-    .then(res => {
-      expect(res.body.name).toHaveLength()
-    })
 })

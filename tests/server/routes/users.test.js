@@ -6,10 +6,10 @@ const request = require('supertest')
 const server = require('../../../server/server')
 
 test('/users/:id sends back a 200 status', () => {
-  request(server)
+  return request(server)
     .get(`users/:id`)
     .then(res => {
-     expect(res.body.user).toHaveLength()
+     expect(res.body.user).toHaveLength(1)
     })
 })
 
