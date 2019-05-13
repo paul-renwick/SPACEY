@@ -28,11 +28,21 @@ export function addCard (card, callback) {
     })
 }
 
-export function updateCard (card, callback) {
+export function updateCard (card) {
   return request
-  .update(cardUrl) // CHECK THIS, WILL NOT WORK CURRENTLY
+  .put(`/cards/${card.id}`) 
   .send(card)
-  .end((err, res) => {
-    callback(err)
-  })
+  .catch(err => {
+    // eslint-disable-next-line no-console
+      console.error(err)
+    })
 }
+
+// export function updateCard (card, callback) {
+//   return request
+//   .put(cardUrl) 
+//   .send(card)
+//   .end((err, res) => {
+//     callback(err)
+//   })
+// }

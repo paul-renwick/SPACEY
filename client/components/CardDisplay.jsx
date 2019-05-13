@@ -10,15 +10,18 @@ class CardList extends React.Component {
   }
 
   handleSubmit (e) {
-    const check1Length = this.props.cards.check1.length
-    const check2Length = this.props.cards.check2.length
-    const check3Length = this.props.cards.check3.length
+    const card = this.props.cards.filter(item => 
+      item.id == this.props.match.params.id
+    )
+    const check1Length = card[0].check1.length
+    const check2Length = card[0].check2.length
+    const check3Length = card[0].check3.length
     if ( check3Length === 0 && check2Length === 0 && check1Length === 0){
-      updateCard(cards.check1)
+      this.props.dispatch(updateCard({ check1: Date.now(), id: card[0].id }))
     } else if (check3Length === 0 && check2Length === 0){
-      updateCard(cards.check2)
+      this.props.dispatch(updateCard({ check2: Date.now(), id: card[0].id }))
     } else if (check3Length === 0) { 
-      updateCard(cards.check3)
+      this.props.dispatch(updateCard({ check3: Date.now(), id: card[0].id }))
     } 
   }
 

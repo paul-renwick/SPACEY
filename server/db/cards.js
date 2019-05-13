@@ -5,7 +5,6 @@ const connection = require('knex')(config)
 module.exports = {
   getCard,
   getCards,
-  submitCards,
   addCard,
   updateCard
 }
@@ -27,16 +26,8 @@ function addCard (newCard, db = connection) {
     .insert(newCard)
 }
 
-function submitCards (submission, db = connection) {
+function updateCard (updatedCard, db = connection) {
   return db('cards')
-    .where({ usersId: submission.userId })
-    .insert([{ question: submission.question }, { answer: submission.answer }])
-}
-
-function updateCard (newCardInfo, id, db = connection) {
-  return db('cards')
-  .where('userdId', id)
-  // .update(newCardInfo)
-  .update({check1: card.check1, check2: card.check2, check3: card.check3})
-  .select()
-} //THIS WILL PROBABLY NOT WORK, PLACEHOLDER
+  .where('id', updatedCard.id)
+  .update(updatedCard)
+} 
