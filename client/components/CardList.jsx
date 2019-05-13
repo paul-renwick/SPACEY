@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
 import { getCards } from '../api/cards'
-import {getCategories} from '../api/categories'
 
 class CardList extends React.Component {
   componentDidMount () {
