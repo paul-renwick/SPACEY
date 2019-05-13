@@ -4,7 +4,10 @@ exports.up = (knex, Promise) => {
     table.integer('categoryId')
     table.string('question')
     table.string('answer')
-    table.string('dateCreated')
+    table.integer('dateCreated')
+    table.integer('check1')
+    table.integer('check2')
+    table.integer('check3')
   })
 }
 

@@ -1,25 +1,52 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom'
 
-import { getCards } from '../api/cards'
-
-// import CardPreview from './CardPreview'
+import { getCards, updateCard } from '../api/cards'
+import { Button } from 'react-bootstrap'
 
 class CardList extends React.Component {
   componentDidMount () {
     this.props.dispatch(getCards())
   }
 
+  handleSubmit (e) {
+    const card = this.props.cards.filter(item => 
+      item.id == this.props.match.params.id
+    )
+    const check1Length = card[0].check1.length
+    const check2Length = card[0].check2.length
+    const check3Length = card[0].check3.length
+    if ( check3Length === 0 && check2Length === 0 && check1Length === 0){
+      this.props.dispatch(updateCard({ check1: Date.now(), id: card[0].id }))
+    } else if (check3Length === 0 && check2Length === 0){
+      this.props.dispatch(updateCard({ check2: Date.now(), id: card[0].id }))
+    } else if (check3Length === 0) { 
+      this.props.dispatch(updateCard({ check3: Date.now(), id: card[0].id }))
+    } 
+  }
+
   render () {
     return (
-      <div>
-        <h1>Card Display:</h1>
-        {this.props.cards.map(card => {
-          if (card.id == this.props.match.params.id) {
-            return <p key={card.id}>Q:{card.question}<br />A:{card.answer}</p>
-          }
-        })}
+      <div className='container is-fluid has-text-centered'>
+        <div className='carddisplay'>
+          <h1>Card Display:</h1>
+          {this.props.cards.map(card => {
+            if (card.id == this.props.match.params.id) {
+              return (
+                <article className='message is-info' key={card.id}>
+                  <div className='message-header'>
+                    <p>{card.question}</p>
+                  </div>
+                  <div className='message-body'>
+                  {card.answer}
+                  </div>
+                </article>
+              )
+            }
+          })}
+          <Button type='button' onClick={() => this.handleSubmit()}>PLACE A TICK HERE</Button>
+          <img width ='30px' src='/images/exclamation.png'></img>
+        </div>
       </div>
     )
   }
@@ -32,3 +59,4 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(CardList)
+
