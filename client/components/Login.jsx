@@ -33,13 +33,14 @@ class Login extends React.Component {
       <React.Fragment>
       
           <br/> <br/>
-
+        
 
          <div className='container is-fluid has-text-centered' >
-
+          <h1 className='title is-1'>SPACEY</h1>
          <img src='images/bigBlueLogo.png' style={{width: '200px'}} />
 
-          <h1 className='title is-1'>Login</h1>
+          <h3 className='title is-4'>Login</h3>
+          
 
           <form>
             <div className='Login'> 
