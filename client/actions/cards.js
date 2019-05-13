@@ -1,7 +1,7 @@
-import request from 'superagent'
-
 export const REQUEST_CARDS = 'REQUEST_CARDS'
 export const RECEIVE_CARDS = 'RECEIVE_CARDS'
+export const ADD_CARD = 'ADD_CARD'
+
 // export const ADD_CARD = 'ADD_CARD'
 
 export const requestCards = () => {
@@ -17,6 +17,9 @@ export const receiveCards = (cards) => {
   }
 }
 
-export function addCard (card) {
-    return request('post', '/cards', card)
+export const addCard = (content) => {
+  return {
+    type: ADD_CARD,
+    content
   }
+}

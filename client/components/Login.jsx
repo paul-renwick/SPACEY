@@ -6,6 +6,7 @@ import { signIn } from '../actions/auth'
 import { clearError } from '../actions/error'
 import { Button } from 'react-bootstrap'
 
+
 class Login extends React.Component {
   state = {
     username: '',
@@ -30,9 +31,17 @@ class Login extends React.Component {
     const { username, password } = this.state
     return (
       <React.Fragment>
-        <div className='container is-fluid has-text-centered' >
+      
           <br/> <br/>
+         <h1>SPACEY</h1>
+
+
+         <div className='container is-fluid has-text-centered' >
+
+         <img src='images/bigBlueLogo.png' style={{width: '200px'}} />
+
           <h1 className='title is-1'>Login</h1>
+
           <form>
             <div className='Login'> 
                 <input style={{ textAlign:'center', borderColor:'lightblue' }} 

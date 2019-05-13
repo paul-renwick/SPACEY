@@ -3,18 +3,32 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { getCards } from '../api/cards'
+import {getCategories} from '../api/categories'
 
 class CardList extends React.Component {
-  constructor (props) {
-    super(props)
-  this.state = {
-    notification: true,
-  }
-}
-
   componentDidMount () {
     this.props.dispatch(getCards())
   }
+
+  // notifier = () => {
+  //   {if (this.state.notification === true) {
+  //     return <img src='/images/tick.png'></img>
+  //   } else {
+  //     return <img src='/images/exclamation.png'></img>
+  //   }
+  // }
+  // }
+
+  checkDateCreated = () => {
+  switch (date) {
+    case  (Date.now() > date + 60):
+      return this.setState.notifcation === true
+    case (Date.now() > date + 120):
+      return this.setState.notifcation === true
+    default:
+      return this.setState.notification === false
+  }
+}
 
   render () {
     return (
@@ -29,7 +43,6 @@ class CardList extends React.Component {
                     <article className='message is-info' key={card.id}>
                       <div className='message-header'>
                         <p>{card.question}</p>
-                        <button className='date'>date to study:{card.dateCreated}</button>
                       </div>
                     </article> 
                   </Link>
@@ -38,7 +51,7 @@ class CardList extends React.Component {
             })}
           </div>
         </div>
-        <Link to='/addCard'><button>Add Card</button></Link>
+        <Link to={`/addcard/${this.props.match.params.id}`}><button>Add Card</button></Link>
       </React.Fragment>
       
     )
@@ -47,9 +60,13 @@ class CardList extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    cards: state.cards
+    cards: state.cards,
+    categories: state.categories,
+    userDetails: state.userDetails
   }
 }
 
 export default connect(mapStateToProps)(CardList)
 
+//Have the state of this notifcation based on a switch statement
+//Have the switch statement go through the dateCreated property of the cards field, if the dateCreated value is > 60 then 
