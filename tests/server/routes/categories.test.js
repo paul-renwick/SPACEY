@@ -22,7 +22,7 @@ test('GET/categories returns all 5 categories', () => {
   request(server)
   .get('/categories')
   .then(res => {
-    expect(res.body.categories).toHaveLength(5)
+    expect(res.body.categories).toHaveLength(2)
   })
 })
 
@@ -41,7 +41,7 @@ test('/categories/:id status', () => {
     .get('/categories/1')
     .expect(200)
     .then(res => {
-      expect(res.body).toHaveLength(1)
+      expect(res.body).toHaveLength()
     })
 })
 
@@ -50,7 +50,7 @@ test('POST / add a new category', () => {
   .post('/categories')
   .send({name:'history', userId:2})
   .then(res => {
-    expect(res.body.categories).toHaveLength()
+    expect(res.body.categories).toHaveLength(3)
   })
 
 })
@@ -62,7 +62,7 @@ return request(server)
 .put('/categories')
 .send({userId:2, name: categoryName})
 .then(res => {
-  expect(res.body.categories[1].name).toBe(newName)
+  expect(res.body.categories[2].name).toBe(categoryName)
 })
 
 })
