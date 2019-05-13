@@ -9,17 +9,23 @@ class CardList extends React.Component {
   }
 
   checkDateCreated = (card) => {
-    if ((Date.now() > card.dateCreated + 60) && (card.check1.length === 0)) 
-      return <img width='50px'src='/images/exclamation.png' />
-
-    if ((Date.now() > card.check1 + 120) && (card.check2.length === 0))
-      return <img width='50px'src='/images/exclamation.png' />
-
-    if ((Date.now() > card.check2 + 180) && (card.check3.length === 0))
-      return <img width='50px'src='/images/exclamation.png' />
-    
+    if ((Date.now() > card.dateCreated + 60) && (card.check1.length === 0)) {
+      console.log(`(${Date.now()} > ${card.dateCreated + 60}) && (${card.check1.length} === 0)`)
+      return <img width='50px'src='/images/exclamation.png' /> 
+      
+    }
+    if ((Date.now() > card.check1 + 120) && (card.check2.length === 0)){
+      console.log('second')
+      return <img width='50px'src='/images/exclamation.png' /> 
+    }
+    if ((Date.now() > card.check2 + 180) && (card.check3.length === 0)){
+      console.log('third')
+      return <img width='50px'src='/images/exclamation.png' /> 
+    }
+    console.log('tick')
     return <img width='50px' src='/images/tick.png'/>
   }
+
 
   render () {
     return (
