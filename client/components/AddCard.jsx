@@ -2,6 +2,7 @@ import React from 'react'
 import { addNewCard } from '../api/cards'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class AddCard extends React.Component {
   constructor (props) {
@@ -24,7 +25,6 @@ class AddCard extends React.Component {
 
 
   handleSubmit (e) {
-    console.log(this.props.match.params.id)
     const card = {
       question: this.state.question,
       answer: this.state.answer,
@@ -57,6 +57,7 @@ class AddCard extends React.Component {
               />
               <br /> <br />
               <Button type='button' onClick={() => this.handleSubmit()}>Submit</Button>
+              <Link to={`/cardlist/${this.props.match.params.id}`} ><Button type='button'>Return to card list</Button></Link>
           </form>
         </div>
         

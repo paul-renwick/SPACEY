@@ -7,25 +7,20 @@ class CardList extends React.Component {
   componentDidMount () {
     this.props.dispatch(getCards())
   }
-//I have now implemeneted milliseconds, also will be 
+
   checkDateCreated = (card) => {
     if ((Date.now() > card.dateCreated + 60000) && (card.check1.length === 0)) {
-      console.log(`(${Date.now()} > ${card.dateCreated + 60}) && (${card.check1.length} === 0)`)
       return <img width='50px'src='/images/exclamation.png' /> 
       
     }
-    if ((Date.now() > card.check1 + 120000) && (card.check2.length === 0)){
-      console.log('second')
+    if ((Date.now() > card.check1 + 120000) && (card.check2.length === 0) && (card.check1.length !== 0)){ 
       return <img width='50px'src='/images/exclamation.png' /> 
     }
-    if ((Date.now() > card.check2 + 180000) && (card.check3.length === 0)){
-      console.log('third')
+    if ((Date.now() > card.check2 + 180000) && (card.check3.length === 0) && (card.check2.length !== 0)){
       return <img width='50px'src='/images/exclamation.png' /> 
     }
-    console.log('tick')
     return <img width='50px' src='/images/tick.png'/>
   }
-
 
   render () {
     return (
@@ -65,6 +60,3 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(CardList)
-
-//Have the state of this notifcation based on a switch statement
-//Have the switch statement go through the dateCreated property of the cards field, if the dateCreated value is > 60 then 
