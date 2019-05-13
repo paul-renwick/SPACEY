@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getCards } from '../api/cards'
+import { Button } from 'react-bootstrap'
 
 class CardList extends React.Component {
   componentDidMount () {
@@ -25,9 +26,11 @@ class CardList extends React.Component {
   render () {
     return (
       <React.Fragment>
+        
         <div className='container is-fluid has-text-centered'>
-          <div className='cardList'>
+        <div className='cardList'>
             <h1 className='title is-1'>Card List:</h1>
+            
             {this.props.cards.map(card => {
               if (card.categoryId == this.props.match.params.id) {
                 return (
@@ -37,14 +40,20 @@ class CardList extends React.Component {
                         <p>{card.question}</p>
                         {this.checkDateCreated(card)}
                       </div>
+                      <div className='message-body'> </div>
                     </article> 
                   </Link>
                 )
               }
             })}
+            <br /> <br />
+                    <Link to={`/addcard/${this.props.match.params.id}`}><Button>Add Card</Button></Link>
           </div>
+  
+
         </div>
-        <Link to={`/addcard/${this.props.match.params.id}`}><button>Add Card</button></Link>
+        
+
       </React.Fragment>
       
     )
