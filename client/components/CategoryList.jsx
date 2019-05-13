@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-
-import { getCategories, addCategory } from '../api/categories'
+import { Link } from 'react-router-dom' 
+import { getCategories, addNewCategory } from '../api/categories'
+import { Button } from 'react-bootstrap'
 
 class CategoryList extends React.Component {
   constructor (props) {
     super(props)
   this.state = {
-    categoryName: ''
+    categoryName: '',
+    userId: ''
   }
   this.handleChange = this.handleChange.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
@@ -28,34 +29,32 @@ class CategoryList extends React.Component {
   handleSubmit (e) {
     const newCategory = {
       categoryName: this.state.categoryName,
+      userId: this.props.userDetails.id
     }
-    addCategory(newCategory)
+    this.props.dispatch(addNewCategory(newCategory))
   }
 
   render () {
     const { categories, userDetails} = this.props
     return (
       <React.Fragment>
-          {console.log(userDetails)}
-        <h1>Categories:</h1>
-        {categories.map(category => {
-          if (category.userId === userDetails.id) {
-          return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
-          }
-        })}
-        <form>
-          <label>
-            New Category:
-            <input name='categoryName'
-          placeholder='New Category'
-          value={this.state.categoryName}
-          onChange={this.handleChange}
-        />
-          </label>
-          <button type='button' onClick={() => this.handleSubmit()}>Add New Category</button>
-        </form>
-        </React.Fragment>
-    )
+        <div className='container is-fluid has-text-centered'>
+          <h1 className='title is-1'>Categories:</h1>
+            {categories.map(category => {
+              if (category.userId === userDetails.id) {
+                return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
+                }
+            })} 
+          <br /> <br />
+          <form>
+            <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
+              name="categoryName" placeholder ='New Category' value={this.state.categoryName} onChange={this.handleChange} /> <br /> <br />
+           <Button type='button' onClick={() => this.handleSubmit()}>Add New Category</Button><br /> <br />
+          </form>
+        </div>
+      </React.Fragment>
+      
+    ) 
   }
 }
 

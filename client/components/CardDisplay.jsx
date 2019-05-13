@@ -1,10 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom'
 
 import { getCards } from '../api/cards'
 
-// import CardPreview from './CardPreview'
 
 class CardList extends React.Component {
   componentDidMount () {
@@ -12,14 +10,26 @@ class CardList extends React.Component {
   }
 
   render () {
+    console.log(this.props.cards)
     return (
-      <div>
-        <h1>Card Display:</h1>
-        {this.props.cards.map(card => {
-          if (card.id == this.props.match.params.id) {
-            return <p key={card.id}>Q:{card.question}<br />A:{card.answer}</p>
-          }
-        })}
+      <div className='container is-fluid has-text-centered'>
+        <div className='carddisplay'>
+          <h1>Card Display:</h1>
+          {this.props.cards.map(card => {
+            if (card.id == this.props.match.params.id) {
+              return (
+                <article className='message is-info' key={card.id}>
+                  <div className='message-header'>
+                    <p>{card.question}</p>
+                  </div>
+                  <div className='message-body'>
+                  {card.answer}
+                  </div>
+                </article>
+              )
+            }
+          })}
+        </div>
       </div>
     )
   }
@@ -32,3 +42,4 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(CardList)
+
