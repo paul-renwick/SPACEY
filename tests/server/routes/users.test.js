@@ -1,15 +1,24 @@
 const request = require('supertest')
-// const cheerio = require('cheerio')
 
-// import request from "supertest"
+
+jest.mock('../../../server/db/users', () => ({
+  getUserById: (id) => Promise.resolve(
+    { id: 1, username: 'Steve', hash: '#' }
+   
+  )
+
+}))
 
 const server = require('../../../server/server')
 
-test('/users/:id sends back a 200 status', () => {
+
+test('/users/:id status', () => {
   return request(server)
-    .get(`users/:id`)
+    .get('/api/v1/users/1')
+    .expect(200)
     .then(res => {
-     expect(res.body.user).toHaveLength(1)
+      console.log(res.body)
+      expect(res.body.username).toBe('Steve')
+      expect(res.body.id).toBe(1)
     })
 })
-
