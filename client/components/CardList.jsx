@@ -6,10 +6,27 @@ import { getCards } from '../api/cards'
 import {getCategories} from '../api/categories'
 
 class CardList extends React.Component {
-  constructor (props) {
-    super(props)
-  this.state = {
-    notification: true,
+  componentDidMount () {
+    this.props.dispatch(getCards())
+  }
+
+  // notifier = () => {
+  //   {if (this.state.notification === true) {
+  //     return <img src='/images/tick.png'></img>
+  //   } else {
+  //     return <img src='/images/exclamation.png'></img>
+  //   }
+  // }
+  // }
+
+  checkDateCreated = () => {
+  switch (date) {
+    case  (Date.now() > date + 60):
+      return this.setState.notifcation === true
+    case (Date.now() > date + 120):
+      return this.setState.notifcation === true
+    default:
+      return this.setState.notification === false
   }
 }
 
@@ -26,7 +43,6 @@ class CardList extends React.Component {
                     <article className='message is-info' key={card.id}>
                       <div className='message-header'>
                         <p>{card.question}</p>
-                        <button className='date'>date to study:{card.dateCreated}</button>
                       </div>
                     </article> 
                   </Link>
@@ -52,3 +68,5 @@ function mapStateToProps (state) {
 
 export default connect(mapStateToProps)(CardList)
 
+//Have the state of this notifcation based on a switch statement
+//Have the switch statement go through the dateCreated property of the cards field, if the dateCreated value is > 60 then 

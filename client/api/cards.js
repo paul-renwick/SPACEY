@@ -19,6 +19,16 @@ export function getCards () {
   }
 }
 
+export function updateCard (card) {
+  return request
+  .put(`/cards/${card.id}`) 
+  .send(card)
+  .catch(err => {
+    // eslint-disable-next-line no-console
+      console.error(err)
+    })
+}
+
 export function addNewCard (card) {
   return (dispatch) => {
     dispatch(addCard(card))

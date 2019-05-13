@@ -5,6 +5,9 @@ exports.up = (knex, Promise) => {
     table.string('question')
     table.string('answer')
     table.integer('dateCreated')
+    table.integer('check1')
+    table.integer('check2')
+    table.integer('check3')
   })
 }
 

@@ -5,14 +5,14 @@ const connection = require('knex')(config)
 module.exports = {
   getCard,
   getCards,
-  submitCards,
-  addCard
+  addCard,
+  updateCard
 }
 
 function getCards (db = connection) {
   return db('cards')
     .join('categories', 'categories.id', 'cards.categoryId')
-    .select('cards.id', 'cards.categoryId', 'cards.question', 'cards.answer', 'cards.dateCreated')
+    .select('cards.id', 'cards.categoryId', 'cards.question', 'cards.answer', 'cards.dateCreated', 'cards.check1', 'cards.check2', 'cards.check3' )
 }
 
 function getCard (id, db = connection) {
@@ -26,8 +26,8 @@ function addCard (newCard, db = connection) {
     .insert(newCard)
 }
 
-function submitCards (submission, db = connection) {
+function updateCard (updatedCard, db = connection) {
   return db('cards')
-    .where({ usersId: submission.userId })
-    .insert([{ question: submission.question }, { answer: submission.answer }])
-}
+  .where('id', updatedCard.id)
+  .update(updatedCard)
+} 

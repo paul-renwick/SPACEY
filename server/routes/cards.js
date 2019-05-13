@@ -30,15 +30,17 @@ router.get('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
-  const submission = {
-    userId: id,
-    question: req.body.question,
-    answer: req.body.answer
+  const updatedCard = {
+    id: req.params.id,
+    check1: req.body.check1,
+    check2: req.body.check2,
+    check3: req.body.check3
+
   }
-  db.submitCards(submission)
+  db.updateCard(updatedCard)
     .then(() => res.json({ notice: 'evidence has been updated! ' }))
     .catch(err => res.status(500).send(err.message))
 })
+
 
 module.exports = router

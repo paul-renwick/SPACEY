@@ -31,7 +31,6 @@ class AddCard extends React.Component {
       dateCreated: Date.now(),
       categoryId: this.props.match.params.id
     }
-    console.log(card)
     this.props.dispatch(addNewCard(card))
   }
 
@@ -56,7 +55,6 @@ class AddCard extends React.Component {
               <br /> <br />
               <Button type='button' onClick={() => this.handleSubmit()}>Submit</Button>
           </form>
-
         </div>
         
       </React.Fragment>
