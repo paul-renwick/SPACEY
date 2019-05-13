@@ -10,25 +10,18 @@ class CardList extends React.Component {
     this.props.dispatch(getCards())
   }
 
-  // notifier = () => {
-  //   {if (this.state.notification === true) {
-  //     return <img src='/images/tick.png'></img>
-  //   } else {
-  //     return <img src='/images/exclamation.png'></img>
-  //   }
-  // }
-  // }
+  checkDateCreated = (card) => {
+    if ((Date.now() > card.dateCreated + 60) && (card.check1.length === 0)) 
+      return <img width='50px'src='/images/exclamation.png' />
 
-  checkDateCreated = () => {
-  switch (date) {
-    case  (Date.now() > date + 60):
-      return this.setState.notifcation === true
-    case (Date.now() > date + 120):
-      return this.setState.notifcation === true
-    default:
-      return this.setState.notification === false
+    if ((Date.now() > card.check1 + 120) && (card.check2.length === 0))
+      return <img width='50px'src='/images/exclamation.png' />
+
+    if ((Date.now() > card.check2 + 180) && (card.check3.length === 0))
+      return <img width='50px'src='/images/exclamation.png' />
+    
+    return <img width='50px' src='/images/tick.png'/>
   }
-}
 
   render () {
     return (
@@ -43,6 +36,7 @@ class CardList extends React.Component {
                     <article className='message is-info' key={card.id}>
                       <div className='message-header'>
                         <p>{card.question}</p>
+                        {this.checkDateCreated(card)}
                       </div>
                     </article> 
                   </Link>

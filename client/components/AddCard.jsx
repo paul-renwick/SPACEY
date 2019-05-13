@@ -29,7 +29,10 @@ class AddCard extends React.Component {
       question: this.state.question,
       answer: this.state.answer,
       dateCreated: Date.now(),
-      categoryId: this.props.match.params.id
+      categoryId: this.props.match.params.id,
+      check1: '',
+      check2: '',
+      check3: ''
     }
     this.props.dispatch(addNewCard(card))
   }
