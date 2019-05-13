@@ -33,7 +33,6 @@ class Login extends React.Component {
       <React.Fragment>
       
           <br/> <br/>
-         <h1>SPACEY</h1>
 
 
          <div className='container is-fluid has-text-centered' >

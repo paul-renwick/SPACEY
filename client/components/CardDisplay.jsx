@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { getCards, updateCard } from '../api/cards'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+
 
 class CardList extends React.Component {
   componentDidMount () {
@@ -45,7 +47,7 @@ class CardList extends React.Component {
             }
           })}
           <Button type='button' onClick={() => this.handleSubmit()}>PLACE A TICK HERE</Button>
-          <img width ='30px' src='/images/exclamation.png'></img>
+        <Button type='button'>Return to Card list</Button>
         </div>
       </div>
     )
