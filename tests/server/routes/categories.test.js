@@ -30,12 +30,12 @@ test('GET/categories returns all 5 categories', () => {
 
 
 
-test('/category/:id sends back a 200 status', (req, res) => {
+test('/category/:id sends back a 200 status', () => {
   request(server)
   .get('category/:id')
   .expect(200)
   .then(res => {
-    expect(res.body.name).toHaveLength()
+    expect(res.body).toHaveLength(1)
   })
 })
 
