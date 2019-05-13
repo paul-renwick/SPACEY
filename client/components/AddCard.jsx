@@ -1,6 +1,7 @@
 import React from 'react'
-import { addCard } from '../api/cards'
+import { addNewCard } from '../api/cards'
 import { Button } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 class AddCard extends React.Component {
   constructor (props) {
@@ -9,7 +10,7 @@ class AddCard extends React.Component {
     question: '',
     answer: '',
     dateCreated: '',
-    categoryId: 1
+    categoryId: ''
   }
   this.handleChange = this.handleChange.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,15 +22,17 @@ class AddCard extends React.Component {
     })
   }
 
+
   handleSubmit (e) {
+    console.log(this.props.categories.id)
     const card = {
       question: this.state.question,
       answer: this.state.answer,
       dateCreated: Date.now(),
-      categoryId: this.state.categoryId
+      categoryId: this.props.categories.id
     }
     console.log(card)
-    addCard(card)
+    this.props.dispatch(addNewCard(card))
   }
 
   render () {
@@ -53,11 +56,20 @@ class AddCard extends React.Component {
               <br /> <br />
               <Button type='button' onClick={() => this.handleSubmit()}>Submit</Button>
           </form>
-            
+
         </div>
         
       </React.Fragment>
     )
   }
 }
-export default AddCard
+
+function mapStateToProps (state) {
+  return {
+    cards: state.cards,
+    userDetails: state.userDetails,
+    categories: state.categories
+  }
+}
+
+export default connect(mapStateToProps)(AddCard)

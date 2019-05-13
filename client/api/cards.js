@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { requestCards, receiveCards } from '../actions/cards'
+import { requestCards, receiveCards, addCard } from '../actions/cards'
 
 const cardUrl = '/cards'
 
@@ -7,7 +7,7 @@ export function getCards () {
   return (dispatch) => {
     dispatch(requestCards())
     return request
-      .get('/cards')
+      .get(cardUrl)
       .then(res => {
         const newCard = res.body
         dispatch(receiveCards(newCard))
@@ -19,11 +19,16 @@ export function getCards () {
   }
 }
 
-export function addCard (card, callback) {
-  return request
-    .post(cardUrl)
-    .send(card)
-    .end((err, res) => {
-      callback(err)
-    })
+export function addNewCard (card) {
+  return (dispatch) => {
+    dispatch(addCard(card))
+    return request
+      .post(cardUrl)
+      .send(card)
+      .then(() => dispatch(getCards()))
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error(err)
+      })
+  }
 }
