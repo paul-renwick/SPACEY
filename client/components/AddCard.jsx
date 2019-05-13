@@ -24,12 +24,12 @@ class AddCard extends React.Component {
 
 
   handleSubmit (e) {
-    console.log(this.props.categories.id)
+    console.log(this.props.match.params.id)
     const card = {
       question: this.state.question,
       answer: this.state.answer,
       dateCreated: Date.now(),
-      categoryId: this.props.categories.id
+      categoryId: this.props.match.params.id
     }
     console.log(card)
     this.props.dispatch(addNewCard(card))

@@ -17,7 +17,7 @@ const App = () => {
           <Route path='/categorylist/' component={Dashboard} />
           <Route path='/cardlist/:id'component={CardList} />
           <Route path='/display/:id' component={CardDisplay} />
-          <Route path='/addcard' component={AddCard} />
+          <Route path='/addcard/:id' component={AddCard} />
       </Switch>
     </Router>
   )

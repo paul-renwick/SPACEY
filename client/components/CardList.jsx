@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { getCards } from '../api/cards'
+import {getCategories} from '../api/categories'
 
 class CardList extends React.Component {
   constructor (props) {
@@ -11,10 +12,6 @@ class CardList extends React.Component {
     notification: true,
   }
 }
-
-  componentDidMount () {
-    this.props.dispatch(getCards())
-  }
 
   render () {
     return (
@@ -38,7 +35,7 @@ class CardList extends React.Component {
             })}
           </div>
         </div>
-        <Link to='/addCard'><button>Add Card</button></Link>
+        <Link to={`/addcard/${this.props.match.params.id}`}><button>Add Card</button></Link>
       </React.Fragment>
       
     )
@@ -48,6 +45,7 @@ class CardList extends React.Component {
 function mapStateToProps (state) {
   return {
     cards: state.cards,
+    categories: state.categories,
     userDetails: state.userDetails
   }
 }
