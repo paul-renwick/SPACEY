@@ -17,7 +17,6 @@ class CategoryList extends React.Component {
 
   componentDidMount () {
     this.props.dispatch(getCategories())
-    console.log(this.props.userDetails)
   }
 
   handleChange = e => {
