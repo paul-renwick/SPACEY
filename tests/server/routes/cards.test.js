@@ -1,5 +1,7 @@
 const request = require('supertest')
 
+
+
 jest.mock('../../../server/db/cards', () => ({
   getCards: () => Promise.resolve([
     { id: 1, categoryId: 1, question: '2 + 2? ', answer: '4', dateCreated: '' },
@@ -24,7 +26,7 @@ jest.mock('../../../server/db/cards', () => ({
       { id: 7, categoryId: 3, question: 'Which spelling is correct: category or catagory? ', answer: 'Category', dateCreated: '' },
       { id: 8, categoryId: 3, question: 'Which is correct, alot or a lot?', answer: 'a lot', dateCreated: '' }
   ]),
-  submitCards: () => Promise.resolve(
+  updateCard: () => Promise.resolve(
     {id: 8, categoryId: 3, question: 'Which is correct, alot or a lot?', answer: 'a lot', dateCreated: '' }
   )
 
@@ -63,7 +65,7 @@ test('POST / add a new card', () => {
 })
 
 test('PUT /:id updates a card', () => {
-  const question = 'what is the capital of India'
+  const question = 'what is the capital of South Africa'
   return request(server)
   .put('/cards/1')
   .send({categoryId:3, name: question})
