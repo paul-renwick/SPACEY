@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' 
-import { getCategories, addCategory } from '../api/categories'
+import { getCategories, addNewCategory } from '../api/categories'
 import { Button } from 'react-bootstrap'
 
 class CategoryList extends React.Component {
   constructor (props) {
     super(props)
   this.state = {
-    categoryName: ''
+    categoryName: '',
+    userId: ''
   }
   this.handleChange = this.handleChange.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
@@ -16,6 +17,7 @@ class CategoryList extends React.Component {
 
   componentDidMount () {
     this.props.dispatch(getCategories())
+    console.log(this.props.userDetails)
   }
 
   handleChange = e => {
@@ -27,20 +29,21 @@ class CategoryList extends React.Component {
   handleSubmit (e) {
     const newCategory = {
       categoryName: this.state.categoryName,
+      userId: this.props.userDetails.id
     }
-    addCategory(newCategory)
+    this.props.dispatch(addNewCategory(newCategory))
   }
 
   render () {
-    const { categories } = this.props
+    const { categories, userDetails} = this.props
     return (
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
           <h1 className='title is-1'>Categories:</h1>
             {categories.map(category => {
-              return (
-                <Link to ={`/cardlist/${category.id}`} key={category.id}><div><h4>{category.categoryName}</h4></div></Link>
-              )
+              if (category.userId === userDetails.id) {
+                return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
+                }
             })} 
           <br /> <br />
           <form>
@@ -57,9 +60,10 @@ class CategoryList extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    categories: state.categories,
-    userDetails: state.userDetails
+    userDetails: state.userDetails,
+    categories: state.categories
   }
 }
+
 
 export default connect(mapStateToProps)(CategoryList)
