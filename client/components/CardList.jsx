@@ -3,28 +3,21 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { getCards } from '../api/cards'
+import {getCategories} from '../api/categories'
 
 class CardList extends React.Component {
-  constructor (props) {
-    super(props)
-  this.state = {
-    notification: true,
-  }
-}
-
   componentDidMount () {
     this.props.dispatch(getCards())
   }
 
-
-  notifier = () => {
-    {if (this.state.notification === true) {
-      return <img src='/images/tick.png'></img>
-    } else {
-      return <img src='/images/exclamation.png'></img>
-    }
-  }
-  }
+  // notifier = () => {
+  //   {if (this.state.notification === true) {
+  //     return <img src='/images/tick.png'></img>
+  //   } else {
+  //     return <img src='/images/exclamation.png'></img>
+  //   }
+  // }
+  // }
 
   checkDateCreated = () => {
   switch (date) {
@@ -36,10 +29,6 @@ class CardList extends React.Component {
       return this.setState.notification === false
   }
 }
-
-// {this.checkDateCreated(card.dateCreated)}
-// {this.notifier()}
-
 
   render () {
     return (
@@ -62,7 +51,7 @@ class CardList extends React.Component {
             })}
           </div>
         </div>
-        <Link to='/addCard'><button>Add Card</button></Link>
+        <Link to={`/addcard/${this.props.match.params.id}`}><button>Add Card</button></Link>
       </React.Fragment>
       
     )
@@ -71,7 +60,9 @@ class CardList extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    cards: state.cards
+    cards: state.cards,
+    categories: state.categories,
+    userDetails: state.userDetails
   }
 }
 
