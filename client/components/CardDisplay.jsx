@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getCards, updateCard } from '../api/cards'
 import { Link } from 'react-router-dom'
-
 import { Button } from 'react-bootstrap'
 
 //Material UI
@@ -12,9 +11,12 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardHeader from '@material-ui/core/CardHeader'
 
+
 const styles = {
   card: {
-    minWidth: 320,
+    width: 400,
+    height: 200,
+    margin: 40
   },
   title: {
     fontSize: 23,
@@ -59,12 +61,11 @@ class CardList extends React.Component {
     return (
       <div className='cardDisplay'>
         <div className='cardContainer'>
-        <br /> 
           {this.props.cards.map(card => {
             if (card.id == this.props.match.params.id) {
               return (
               <React.Fragment>
-                <Card key={card.id}
+                <Card id='cardDisplay' key={card.id}
                   elevation={10}>
                 <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' }>
                 </CardHeader>
@@ -97,9 +98,7 @@ class CardList extends React.Component {
                   Return to Card list
                   </Button>
                   </Link>
-
                  </div>
-
               </React.Fragment>
               )
             }
