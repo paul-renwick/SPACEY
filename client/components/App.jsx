@@ -7,10 +7,12 @@ import Dashboard from './Dashboard'
 import AddCard from './AddCard'
 import CardList from './CardList'
 import CardDisplay from './CardDisplay'
+import Header from './Header'
 
 const App = () => {
   return (
     <Router>
+      <Header />
       <Switch>
           <Route exact path='/' component={Login} />
           <Route path='/register' component={Register} />
