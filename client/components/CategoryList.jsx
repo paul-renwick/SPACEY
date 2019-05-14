@@ -3,24 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' 
 import { getCategories, addNewCategory } from '../api/categories'
 import { Button } from 'react-bootstrap'
-
-//Material UI
-import Card from '@material-ui/core/Card'
-import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-
-const styles = {
-  card: {
-    maxWidth: 20,
-  },
-  title: {
-    fontSize: 20,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-}
-
 
 class CategoryList extends React.Component {
   constructor (props) {
@@ -57,29 +40,30 @@ class CategoryList extends React.Component {
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
           <h1 className='title is-1'>
-          Categories:
+          Subjects
           </h1>
             {categories.map(category => {
               if (category.userId === userDetails.id) {
                 return <React.Fragment>
-                <Link to={`/cardlist/${category.id}`}>
-                <Card key={category.id} 
-                align='center'
-                elevation={5}>
-                  <Typography variant='h3'>
-                  {category.categoryName}
-                  </Typography>
-                </Card>
-                </Link>
-                <br />
+                        <Link to={`/cardlist/${category.id}`}
+                              key={category.id}>
+                          <div key={category.id} className='container has-text-centered'>
+                          <Button id='menuButton' variant="primary" size="lg" block>
+                          <Typography variant='h3' id='menuText'>{category.categoryName}</Typography>
+                          </Button>
+                          </div>
+                  <br />
+                  </Link>
+              
                 </React.Fragment>
+
                 }
             })} 
-          <br /> <br />
+          <br />
           <form>
             <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
               name="categoryName" placeholder ='New Category' value={this.state.categoryName} onChange={this.handleChange} /> <br /> <br />
-           <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Add New Category</Button><br /> <br />
+           <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Add new subject</Button><br /> <br />
           </form>
         </div>
       </React.Fragment>
@@ -95,4 +79,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(CategoryList))
+export default connect(mapStateToProps)(CategoryList)

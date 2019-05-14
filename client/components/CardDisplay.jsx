@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getCards, updateCard } from '../api/cards'
 import { Link } from 'react-router-dom'
-
 import { Button } from 'react-bootstrap'
 
 //Material UI
@@ -12,9 +11,12 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardHeader from '@material-ui/core/CardHeader'
 
+
 const styles = {
   card: {
-    maxWidth: 320,
+    width: 400,
+    height: 200,
+    margin: 40
   },
   title: {
     fontSize: 23,
@@ -57,25 +59,27 @@ class CardList extends React.Component {
 
   render () {
     return (
-      <div className='container is-fluid has-text-centered'>
-        <div className='carddisplay'>
+      <div className='cardDisplay'>
+        <div className='cardContainer'>
           {this.props.cards.map(card => {
             if (card.id == this.props.match.params.id) {
               return (
               <React.Fragment>
-                <Card key={card.id}
-                 align='center'
+                <Card id='cardDisplay' key={card.id}
                   elevation={10}>
-                <CardHeader title={this.state.display === true  ? 'Answer' : 'Question' }>
+                <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' }>
                 </CardHeader>
 
                 <Typography color='primary'
+                align='center'
                  variant="h1"
-                  component="h1">
+                  component="h1"
+                  p={10}
+                  m={10}>
                   {this.state.display === true  ? card.answer : card.question }
                 </Typography>
                 <CardActions>
-                  <Button onClick={this.flipper}>
+                  <Button id='flip' onClick={this.flipper}>
                   Flip
                   </Button>
                   </CardActions>
@@ -94,9 +98,7 @@ class CardList extends React.Component {
                   Return to Card list
                   </Button>
                   </Link>
-
                  </div>
-
               </React.Fragment>
               )
             }
