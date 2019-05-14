@@ -4,7 +4,6 @@ import React from 'react'
 
 class Header extends React.Component {
 render () {
-
   return (
 <React.Fragment>
   
@@ -13,7 +12,6 @@ render () {
     <img src='images/LittleWhiteLogo.png' style={{width: '75px'}} />
   </div>
 </section>
-
 </React.Fragment>
 )
 }

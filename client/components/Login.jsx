@@ -56,8 +56,8 @@ class Login extends React.Component {
                 />
                 <br />  <br />
               
-                <Button type='button' onClick={this.handleSubmit}> Login </Button> 
-                <Link to ='/register'>   <Button onClick={() => this.handleChange}>Register</Button></Link>
+                <Button size="lg" type='button' onClick={this.handleSubmit}> Login </Button> 
+                <Link to ='/register'>   <Button size="lg" onClick={() => this.handleChange}>Register</Button></Link>
             </div>
           </form>
 
