@@ -8,9 +8,9 @@ class Header extends React.Component {
     return 
   } else {
    return <h3>{this.props.userDetails.username}</h3>
-  }
+    }
 }
-  
+
   render () {
 
   return (
@@ -18,10 +18,9 @@ class Header extends React.Component {
   
 <section className="hero is-info">
   <div className="hero-body">
-    <img src='images/LittleWhiteLogo.png' style={{width: '75px'}} />
-  </div>
-  <div className="display-Username">
-  <h3>{this.displayPageName()}</h3>
+    <img id='headerIcon' src='images/LittleWhiteLogo.png' style={{width: '75px'}} />
+  <h3 id='headerUserName'>{this.displayPageName()}</h3>
+  <br></br>
   </div>
 </section>
 

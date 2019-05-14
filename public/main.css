@@ -1,5 +1,4 @@
-
-
+/*  
  body {
   margin: 0; padding: 0;
 }
@@ -21,10 +20,23 @@ body h1 {
 @-webkit-keyframes slide {
     from { background-position: 0 0; }
     to { background-position: -400px 0; }
-} 
- 
+}  */
+
 .hero-body {
   flex-grow: 1;
   flex-shrink: 0;
   padding: 0.5rem 1.5rem;
 }
+
+#headerIcon {
+  float: left;
+}
+
+#headerLogOut {
+  float: right;
+}
+
+#headerUserName {
+  float: right;
+}
+
