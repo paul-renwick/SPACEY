@@ -1,6 +1,6 @@
 
 
- /* body {
+ body {
   margin: 0; padding: 0;
 }
 
@@ -22,7 +22,7 @@ body h1 {
     from { background-position: 0 0; }
     to { background-position: -400px 0; }
 } 
-  */
+ 
 .hero-body {
   flex-grow: 1;
   flex-shrink: 0;
