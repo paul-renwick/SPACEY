@@ -38,10 +38,7 @@ class Login extends React.Component {
          <div className='container is-fluid has-text-centered' >
           <h1 className='title is-1'>SPACEY</h1>
          <img src='images/bigBlueLogo.png' style={{width: '200px'}} />
-
           <h3 className='title is-4'>Login</h3>
-          
-
           <form>
             <div className='Login'> 
                 <input style={{ textAlign:'center', borderColor:'lightblue' }} 
