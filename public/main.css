@@ -1,5 +1,9 @@
-/* .BigBlueLogin{
-  width: 200px
-  
-  
-} */
+.hero-body {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0.5rem 1.5rem;
+}
+
+#indicator {
+  float: right;
+}

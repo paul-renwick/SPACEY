@@ -26,7 +26,6 @@ class CardList extends React.Component {
   render () {
     return (
       <React.Fragment>
-        
         <div className='container is-fluid has-text-centered'>
         <div className='cardList'>
             <h1 className='title is-1'>Card List:</h1>
@@ -34,28 +33,29 @@ class CardList extends React.Component {
             {this.props.cards.map(card => {
               if (card.categoryId == this.props.match.params.id) {
                 return (
-                  <Link to={`/display/${card.id}`} key={card.id}>
-                    <article className='message is-info' key={card.id}>
-                      <div className='message-header'>
-                        <p>{card.question}</p>
-                        {this.checkDateCreated(card)}
-                      </div>
-                      <div className='message-body'> </div>
-                    </article> 
+                  <React.Fragment>
+                  <Link to={`/display/${card.id}`}
+                   key={card.id}>
+                  <div key={card.id} className='container has-text-centered'>
+                  <Button variant="primary" size="lg" block>
+                  <h1 className='title is-1'>{card.question}{''}{''}{''}{this.checkDateCreated(card)}</h1>
+                    </Button>
+                  </div>
+                  <br />
                   </Link>
+                  </React.Fragment>
                 )
               }
             })}
             <br /> <br />
-                    <Link to={`/addcard/${this.props.match.params.id}`}><Button>Add Card</Button></Link>
+            <Link to={`/addcard/${this.props.match.params.id}`}><Button size="lg">Add Card</Button></Link>
+            {' '}
+            <Link to={'/CategoryList'}>
+            <Button size="lg">Return to Categories</Button>
+            </Link>     
           </div>
-  
-
         </div>
-        
-
       </React.Fragment>
-      
     )
   }
 }

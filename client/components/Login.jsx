@@ -33,15 +33,11 @@ class Login extends React.Component {
       <React.Fragment>
       
           <br/> <br/>
-        
+      <div className='container is-fluid has-text-centered' >
+      <h1 className='title is-1'>SPACEY</h1>
 
-         <div className='container is-fluid has-text-centered' >
-          <h1 className='title is-1'>SPACEY</h1>
          <img src='images/bigBlueLogo.png' style={{width: '200px'}} />
-
           <h3 className='title is-4'>Login</h3>
-          
-
           <form>
             <div className='Login'> 
                 <input style={{ textAlign:'center', borderColor:'lightblue' }} 
@@ -60,8 +56,8 @@ class Login extends React.Component {
                 />
                 <br />  <br />
               
-                <Button type='button' onClick={this.handleSubmit}> Login </Button> 
-                <Link to ='/register'>   <Button onClick={() => this.handleChange}>Register</Button></Link>
+                <Button size="lg" type='button' onClick={this.handleSubmit}> Login </Button> 
+                <Link to ='/register'>   <Button size="lg" onClick={() => this.handleChange}>Register</Button></Link>
             </div>
           </form>
 
