@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -11,16 +12,16 @@ class CardList extends React.Component {
 
   checkDateCreated = (card) => {
     if ((Date.now() > card.dateCreated + 60000) && (card.check1.length === 0)) {
-      return <img width='50px'src='/images/exclamation.png' /> 
+      return <img className='check' width='50px'src='/images/exclamation.png' /> 
       
     }
     if ((Date.now() > card.check1 + 120000) && (card.check2.length === 0) && (card.check1.length !== 0)){ 
-      return <img width='50px'src='/images/exclamation.png' /> 
+      return <img className='check' width='50px'src='/images/exclamation.png' /> 
     }
     if ((Date.now() > card.check2 + 180000) && (card.check3.length === 0) && (card.check2.length !== 0)){
-      return <img width='50px'src='/images/exclamation.png' /> 
+      return <img className='check' width='50px'src='/images/exclamation.png' /> 
     }
-    return <img width='50px' src='/images/tick.png'/>
+    return <img className='check' width='50px' src='/images/tick.png'/>
   }
 
   render () {
@@ -38,7 +39,7 @@ class CardList extends React.Component {
                    key={card.id}>
                   <div key={card.id} className='container has-text-centered'>
                   <Button variant="primary" size="lg" block>
-                  <h1 className='title is-1'>{card.question}{''}{''}{''}{this.checkDateCreated(card)}</h1>
+                  <h1 className='title is-1 has-text-white'>{card.question}{''}{''}{''}{this.checkDateCreated(card)}</h1>
                     </Button>
                   </div>
                   <br />

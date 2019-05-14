@@ -2,8 +2,13 @@
   flex-grow: 1;
   flex-shrink: 0;
   padding: 0.5rem 1.5rem;
+  background-color: #007bff;
 }
 
 #indicator {
+  float: right;
+}
+
+.check {
   float: right;
 }
