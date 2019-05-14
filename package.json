@@ -30,6 +30,11 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "jest": {
+    "setupFiles": [
+      "./tests/setup.js"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
@@ -62,7 +67,6 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "dotenv": "^8.0.0",
-    "enzyme": "^3.9.0",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
@@ -70,6 +74,7 @@
     "knex": "^0.16.5",
     "libsodium-wrappers": "^0.7.4",
     "libsodium-wrappers-sumo": "^0.7.4",
+    "redux-mock-store": "^1.5.3",
     "sqlite3": "^4.0.7",
     "superagent": "^5.0.5"
   }
