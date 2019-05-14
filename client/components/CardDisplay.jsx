@@ -14,7 +14,7 @@ import CardHeader from '@material-ui/core/CardHeader'
 
 const styles = {
   card: {
-    maxWidth: 320,
+    minWidth: 320,
   },
   title: {
     fontSize: 23,
@@ -57,21 +57,24 @@ class CardList extends React.Component {
 
   render () {
     return (
-      <div className='container is-fluid has-text-centered'>
-        <div className='carddisplay'>
+      <div className='cardDisplay'>
+        <div className='test'>
+        <br /> 
           {this.props.cards.map(card => {
             if (card.id == this.props.match.params.id) {
               return (
               <React.Fragment>
                 <Card key={card.id}
-                 align='center'
                   elevation={10}>
-                <CardHeader title={this.state.display === true  ? 'Answer' : 'Question' }>
+                <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' }>
                 </CardHeader>
 
                 <Typography color='primary'
+                align='center'
                  variant="h1"
-                  component="h1">
+                  component="h1"
+                  p={10}
+                  m={10}>
                   {this.state.display === true  ? card.answer : card.question }
                 </Typography>
                 <CardActions>

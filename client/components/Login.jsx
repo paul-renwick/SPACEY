@@ -31,7 +31,6 @@ class Login extends React.Component {
     const { username, password } = this.state
     return (
       <React.Fragment>
-      
           <br/> <br/>
       <div className='container is-fluid has-text-centered' >
       <h1 className='title is-1' color='black'>SPACEY</h1>
@@ -42,7 +41,7 @@ class Login extends React.Component {
             <div className='Login'> 
                 <input style={{ textAlign:'center', borderColor:'lightblue' }} 
                   name='username'
-                  placeholder ='username'
+                  placeholder ='Username'
                   value={username}
                   onChange={this.handleChange}
                 />
@@ -50,7 +49,7 @@ class Login extends React.Component {
                 <input style={{ textAlign:'center', borderColor:'lightblue' }}
                   name ='password'
                   type= 'password'
-                  placeholder = 'password'
+                  placeholder = 'Password'
                   value={password}
                   onChange={this.handleChange}
                 />

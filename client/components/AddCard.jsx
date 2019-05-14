@@ -45,19 +45,19 @@ class AddCard extends React.Component {
           <form action='submit' name='AddCard'>
             <h1 className='title is-1'>Add Card</h1>
               <input name='question'
-                placeholder='question'
+                placeholder='Question'
                 value={question}
                 onChange={this.handleChange}
               />
               <br /> <br />
               <input name='answer'
-                placeholder='answer'
+                placeholder='Answer'
                 value={answer}
                 onChange={this.handleChange}
               />
               <br /> <br />
-              <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Submit</Button>
-              <Link to={`/cardlist/${this.props.match.params.id}`} ><Button size="lg" type='button'>Return to card list</Button></Link>
+              <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Submit</Button>{''}
+              {''}<Link to={`/cardlist/${this.props.match.params.id}`} ><Button size="lg" type='button'>Return to card list</Button></Link>
           </form>
         </div>
         

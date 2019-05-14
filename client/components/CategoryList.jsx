@@ -39,7 +39,7 @@ class CategoryList extends React.Component {
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
           <h1 className='title is-1'>
-          Categories:
+          Subjects
           </h1>
             {categories.map(category => {
               if (category.userId === userDetails.id) {
@@ -53,12 +53,12 @@ class CategoryList extends React.Component {
                           </div>
                   <br />
                   </Link>
-                <br />
+              
                 </React.Fragment>
 
                 }
             })} 
-          <br /> <br />
+          <br />
           <form>
             <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
               name="categoryName" placeholder ='New Category' value={this.state.categoryName} onChange={this.handleChange} /> <br /> <br />
