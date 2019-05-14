@@ -1,12 +1,43 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { getCards, updateCard } from '../api/cards'
-import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+//Material UI
+import { withStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import blue from '@material-ui/core/colors/blue'
+import purple from '@material-ui/core/colors/purple'
+import CardActions from '@material-ui/core/CardActions';
+
+const styles = {
+  palette: {
+    primary: blue,
+    secondary: purple
+  },
+  card: {
+    maxWidth: 345,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+}
 
 class CardList extends React.Component {
+  state = {
+    display: false
+  }
+
   componentDidMount () {
     this.props.dispatch(getCards())
   }
@@ -27,27 +58,69 @@ class CardList extends React.Component {
     } 
   }
 
+  flipper = (e) => {
+    this.setState({
+      display: true || false
+    })
+  }
+
   render () {
     return (
       <div className='container is-fluid has-text-centered'>
         <div className='carddisplay'>
-          <h1>Card Display:</h1>
           {this.props.cards.map(card => {
             if (card.id == this.props.match.params.id) {
               return (
-                <article className='message is-info' key={card.id}>
-                  <div className='message-header'>
-                    <p>{card.question}</p>
-                  </div>
-                  <div className='message-body'>
-                  {card.answer}
-                  </div>
-                </article>
+              <React.Fragment>
+                <Card key={card.id}
+                 align='center'
+                  elevation={5}>
+                <Typography color='primary'
+                 variant="h3"
+                  component="h3">
+                {this.state.display === true  ? 'Answer' : 'Question' }
+                </Typography>
+                <br />
+                <Typography color='primary'
+                 variant="h1"
+                  component="h1">
+                  {this.state.display === true  ? card.answer : card.question }
+                </Typography>
+                <CardActions>
+                  <Button onClick={this.flipper}>
+                  Flip
+                  </Button>
+                  </CardActions>
+                </Card>
+
+                <br /> 
+               <div style={{ textAlign: 'center' }} >
+
+              <Button align='center'
+               variant="contained"
+                color='primary'
+                 size='large'
+                  type='button'
+                   onClick={() => this.handleSubmit()}>
+                   Tick
+                   </Button>
+
+              <Link to={`/cardlist/${card.categoryId}`} key={card.id}>
+              <Button size='large'
+               align='center'
+                variant="contained"
+                 color='primary'
+                  type='button'>
+                  Return to Card list
+                  </Button>
+                  </Link>
+
+                 </div>
+
+              </React.Fragment>
               )
             }
           })}
-          <Button type='button' onClick={() => this.handleSubmit()}>PLACE A TICK HERE</Button>
-        <Button type='button'>Return to Card list</Button>
         </div>
       </div>
     )
@@ -60,5 +133,5 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(CardList)
 
+export default connect(mapStateToProps)(withStyles(styles)(CardList))
