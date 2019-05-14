@@ -90,7 +90,7 @@ class CardList extends React.Component {
 
               <Button size="lg"
                    onClick={() => this.handleSubmit()}>
-                   Tick
+                   I got it!
                    </Button>
                    {' '}
               <Link to={`/cardlist/${card.categoryId}`} key={card.id}>
