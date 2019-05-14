@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getCards } from '../api/cards'
 import { Button } from 'react-bootstrap'
+import Typography from '@material-ui/core/Typography'
 
 class CardList extends React.Component {
   componentDidMount () {
@@ -24,13 +25,16 @@ class CardList extends React.Component {
     return <img className='check' width='50px' src='/images/tick.png'/>
   }
 
+  title = this.props.categories.filter(item => 
+      item.id == this.props.match.params.id)
+
   render () {
     return (
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
         <div className='cardList'>
-            <h1 className='title is-1'>Change this to the subject name</h1>
-            
+{            <h1 className='title is-1'>{this.title[0].categoryName}</h1>
+}            
             {this.props.cards.map(card => {
               if (card.categoryId == this.props.match.params.id) {
                 return (
@@ -38,9 +42,9 @@ class CardList extends React.Component {
                   <Link to={`/display/${card.id}`}
                    key={card.id}>
                   <div key={card.id} className='container has-text-centered'>
-                  <Button variant="primary" size="lg" block>
-                  <h1 className='title is-1 has-text-white'>{card.question}{''}{''}{''}{this.checkDateCreated(card)}</h1>
-                    </Button>
+                  <Button variant="primary" size="lg" id='menuButton' block>
+                  <Typography variant='h3' id='menuText2'>{card.question}{this.checkDateCreated(card)}</Typography>
+                  </Button>
                   </div>
                   <br />
                   </Link>
@@ -49,10 +53,10 @@ class CardList extends React.Component {
               }
             })}
             <br /> <br />
-            <Link to={`/addcard/${this.props.match.params.id}`}><Button size="lg">Add Card</Button></Link>
+            <Link to={`/addcard/${this.props.match.params.id}`}><Button size="lg">Add a new flashcard</Button></Link>
             {' '}
             <Link to={'/CategoryList'}>
-            <Button size="lg">Return to Categories</Button>
+            <Button size="lg">Return to subjects</Button>
             </Link>     
           </div>
         </div>

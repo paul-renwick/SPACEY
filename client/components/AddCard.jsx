@@ -43,7 +43,7 @@ class AddCard extends React.Component {
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
           <form action='submit' name='AddCard'>
-            <h1 className='title is-1'>Add Card</h1>
+            <h1 className='title is-1'>Add New Flash Card</h1>
               <input name='question'
                 placeholder='Question'
                 value={question}

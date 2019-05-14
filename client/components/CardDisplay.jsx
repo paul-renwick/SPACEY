@@ -58,7 +58,7 @@ class CardList extends React.Component {
   render () {
     return (
       <div className='cardDisplay'>
-        <div className='test'>
+        <div className='cardContainer'>
         <br /> 
           {this.props.cards.map(card => {
             if (card.id == this.props.match.params.id) {

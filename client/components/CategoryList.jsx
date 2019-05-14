@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' 
 import { getCategories, addNewCategory } from '../api/categories'
 import { Button } from 'react-bootstrap'
+import Typography from '@material-ui/core/Typography'
 
 class CategoryList extends React.Component {
   constructor (props) {
@@ -47,8 +48,8 @@ class CategoryList extends React.Component {
                         <Link to={`/cardlist/${category.id}`}
                               key={category.id}>
                           <div key={category.id} className='container has-text-centered'>
-                          <Button variant="primary" size="lg" block>
-                          <h1 className='title is-1 has-text-white'>{category.categoryName}</h1>
+                          <Button id='menuButton' variant="primary" size="lg" block>
+                          <Typography variant='h3' id='menuText'>{category.categoryName}</Typography>
                           </Button>
                           </div>
                   <br />
@@ -62,7 +63,7 @@ class CategoryList extends React.Component {
           <form>
             <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
               name="categoryName" placeholder ='New Category' value={this.state.categoryName} onChange={this.handleChange} /> <br /> <br />
-           <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Add New Category</Button><br /> <br />
+           <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Add new subject</Button><br /> <br />
           </form>
         </div>
       </React.Fragment>
