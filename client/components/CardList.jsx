@@ -26,7 +26,6 @@ class CardList extends React.Component {
   render () {
     return (
       <React.Fragment>
-        
         <div className='container is-fluid has-text-centered'>
         <div className='cardList'>
             <h1 className='title is-1'>Card List:</h1>
@@ -37,13 +36,12 @@ class CardList extends React.Component {
                   <React.Fragment>
                   <Link to={`/display/${card.id}`}
                    key={card.id}>
-                    <article className='message is-info' key={card.id}>
-                      <div key={card.id} className='container has-text-centered'>
-                        <h1 className='title is-1'>{card.question}</h1>
-                        {this.checkDateCreated(card)}
-                      </div>
-                      <div className='message-body'> </div>
-                    </article> 
+                  <div key={card.id} className='container has-text-centered'>
+                  <Button variant="primary" size="lg" block>
+                  <h1 className='title is-1'>{card.question}{''}{''}{''}{this.checkDateCreated(card)}</h1>
+                    </Button>
+                  </div>
+                  <br />
                   </Link>
                   </React.Fragment>
                 )
@@ -58,7 +56,6 @@ class CardList extends React.Component {
           </div>
         </div>
       </React.Fragment>
-      
     )
   }
 }
