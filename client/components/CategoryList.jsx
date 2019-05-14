@@ -4,24 +4,6 @@ import { Link } from 'react-router-dom'
 import { getCategories, addNewCategory } from '../api/categories'
 import { Button } from 'react-bootstrap'
 
-//Material UI
-import Card from '@material-ui/core/Card'
-import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-
-const styles = {
-  card: {
-    maxWidth: 20,
-  },
-  title: {
-    fontSize: 20,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-}
-
-
 class CategoryList extends React.Component {
   constructor (props) {
     super(props)
@@ -62,17 +44,18 @@ class CategoryList extends React.Component {
             {categories.map(category => {
               if (category.userId === userDetails.id) {
                 return <React.Fragment>
-                <Link to={`/cardlist/${category.id}`}>
-                <Card key={category.id} 
-                align='center'
-                elevation={5}>
-                  <Typography variant='h3'>
-                  {category.categoryName}
-                  </Typography>
-                </Card>
-                </Link>
+                        <Link to={`/cardlist/${category.id}`}
+                              key={category.id}>
+                          <div key={category.id} className='container has-text-centered'>
+                          <Button variant="primary" size="lg" block>
+                          <h1 className='title is-1 has-text-white'>{category.categoryName}</h1>
+                          </Button>
+                          </div>
+                  <br />
+                  </Link>
                 <br />
                 </React.Fragment>
+
                 }
             })} 
           <br /> <br />
@@ -95,4 +78,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(CategoryList))
+export default connect(mapStateToProps)(CategoryList)
