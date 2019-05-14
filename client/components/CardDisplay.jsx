@@ -3,30 +3,21 @@ import { connect } from 'react-redux'
 import { getCards, updateCard } from '../api/cards'
 import { Link } from 'react-router-dom'
 
+import { Button } from 'react-bootstrap'
+
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import blue from '@material-ui/core/colors/blue'
-import purple from '@material-ui/core/colors/purple'
-import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardHeader from '@material-ui/core/CardHeader'
 
 const styles = {
-  palette: {
-    primary: blue,
-    secondary: purple
-  },
   card: {
-    maxWidth: 345,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    maxWidth: 320,
   },
   title: {
-    fontSize: 14,
+    fontSize: 23,
   },
   pos: {
     marginBottom: 12,
@@ -74,13 +65,10 @@ class CardList extends React.Component {
               <React.Fragment>
                 <Card key={card.id}
                  align='center'
-                  elevation={5}>
-                <Typography color='primary'
-                 variant="h3"
-                  component="h3">
-                {this.state.display === true  ? 'Answer' : 'Question' }
-                </Typography>
-                <br />
+                  elevation={10}>
+                <CardHeader title={this.state.display === true  ? 'Answer' : 'Question' }>
+                </CardHeader>
+
                 <Typography color='primary'
                  variant="h1"
                   component="h1">
@@ -96,21 +84,13 @@ class CardList extends React.Component {
                 <br /> 
                <div style={{ textAlign: 'center' }} >
 
-              <Button align='center'
-               variant="contained"
-                color='primary'
-                 size='large'
-                  type='button'
+              <Button size="lg"
                    onClick={() => this.handleSubmit()}>
                    Tick
                    </Button>
-
+                   {' '}
               <Link to={`/cardlist/${card.categoryId}`} key={card.id}>
-              <Button size='large'
-               align='center'
-                variant="contained"
-                 color='primary'
-                  type='button'>
+              <Button size="lg">
                   Return to Card list
                   </Button>
                   </Link>

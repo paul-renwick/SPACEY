@@ -56,8 +56,8 @@ class AddCard extends React.Component {
                 onChange={this.handleChange}
               />
               <br /> <br />
-              <Button type='button' onClick={() => this.handleSubmit()}>Submit</Button>
-              <Link to={`/cardlist/${this.props.match.params.id}`} ><Button type='button'>Return to card list</Button></Link>
+              <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Submit</Button>
+              <Link to={`/cardlist/${this.props.match.params.id}`} ><Button size="lg" type='button'>Return to card list</Button></Link>
           </form>
         </div>
         

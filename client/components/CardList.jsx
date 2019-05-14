@@ -34,26 +34,29 @@ class CardList extends React.Component {
             {this.props.cards.map(card => {
               if (card.categoryId == this.props.match.params.id) {
                 return (
-                  <Link to={`/display/${card.id}`} key={card.id}>
+                  <React.Fragment>
+                  <Link to={`/display/${card.id}`}
+                   key={card.id}>
                     <article className='message is-info' key={card.id}>
-                      <div className='message-header'>
-                        <p>{card.question}</p>
+                      <div key={card.id} className='container has-text-centered'>
+                        <h1 className='title is-1'>{card.question}</h1>
                         {this.checkDateCreated(card)}
                       </div>
                       <div className='message-body'> </div>
                     </article> 
                   </Link>
+                  </React.Fragment>
                 )
               }
             })}
             <br /> <br />
-                    <Link to={`/addcard/${this.props.match.params.id}`}><Button>Add Card</Button></Link>
+            <Link to={`/addcard/${this.props.match.params.id}`}><Button size="lg">Add Card</Button></Link>
+            {' '}
+            <Link to={'/CategoryList'}>
+            <Button size="lg">Return to Categories</Button>
+            </Link>     
           </div>
-  
-
         </div>
-        
-
       </React.Fragment>
       
     )
