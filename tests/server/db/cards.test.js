@@ -10,10 +10,9 @@ beforeEach(() => {
 
 afterEach(() => env.cleanup(testDb))
 
-test('getCards returns an event given its id', () => {
-  return db.getCards(, testDb)
-    .then(cards => {
-      expect(cards.questions).toBe('2 + 2?')
+test('getCard returns an individual card', () => {
+  return db.getCard(1, testDb)
+    .then(test => {
+      expect(test.answer).toBe('4')
     })
-    .catch(err => expect(err).toBeNull())
 })

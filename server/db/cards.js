@@ -18,7 +18,7 @@ function getCards (db = connection) {
 
 function getCard (id, db = connection) {
   return db('cards')
-    .where('userId', id)
+    .where('categoryId', id)
     .first()
 }
 
