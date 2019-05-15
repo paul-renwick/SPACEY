@@ -30,16 +30,17 @@ router.get('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  const cards = req.body
-  cards.id = id
-  db.submitCards(cards)
-    .then(update => res.send('' + update))
+  const updatedCard = {
+    id: req.params.id,
+    check1: req.body.check1,
+    check2: req.body.check2,
+    check3: req.body.check3
+
+  }
+  db.updateCard(updatedCard)
+    .then(() => res.json({ notice: 'evidence has been updated! ' }))
+    .catch(err => res.status(500).send(err.message))
 })
 
-router.delete('/', (req, res) => {
-  db.deleteCard(req.body)
-    .then(res.redirect('/cards'))
-})
 
 module.exports = router

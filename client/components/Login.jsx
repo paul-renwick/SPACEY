@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { signIn } from '../actions/auth'
 import { clearError } from '../actions/error'
+import { Button } from 'react-bootstrap'
+
 
 class Login extends React.Component {
   state = {
@@ -29,25 +31,36 @@ class Login extends React.Component {
     const { username, password } = this.state
     return (
       <React.Fragment>
-      <h1>Login</h1>
-      <input name='username'
-        placeholder ='username'
-        value={username}
-        onChange={this.handleChange}
-      />
-      <br />  <br />
-      <input name ='password'
-        type= 'password'
-        placeholder = 'password'
-        value={password}
-        onChange={this.handleChange}
-      />
-      <br />  <br />
-      <button type='button' onClick={this.handleSubmit}> Login </button> <br />  <br />
-      <Link to ='/register'>   <button onClick={() => this.handleChange}>Register</button></Link>
-      {console.log(this.state)}
-    </React.Fragment>
+          <br/> <br/>
+      <div className='container is-fluid has-text-centered' >
+      <h1 className='title is-1'>SPACEY</h1>
+         <img src='images/bigBlueLogo.png' style={{width: '250px'}} />
+          <h3 className='frontTitle is-4 has-text-black'>Login</h3>
+          <form>
+            <div className='Login'> 
+                <input style={{ textAlign:'center', borderColor:'lightblue' }} 
+                  name='username'
+                  placeholder ='Username'
+                  value={username}
+                  onChange={this.handleChange}
+                />
+                <br />  <br />
+                <input style={{ textAlign:'center', borderColor:'lightblue' }}
+                  name ='password'
+                  type= 'password'
+                  placeholder = 'Password'
+                  value={password}
+                  onChange={this.handleChange}
+                />
+                <br />  <br />
+              
+                <Button size="lg" type='button' onClick={this.handleSubmit}> Login </Button> 
+                <Link to ='/register'>   <Button size="lg" onClick={() => this.handleChange}>Register</Button></Link>
+            </div>
+          </form>
 
+        </div>
+      </React.Fragment>
     )
   }
 }

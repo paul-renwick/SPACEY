@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-
-import { getCategories, addCategory } from '../api/categories'
+import { Link } from 'react-router-dom' 
+import { getCategories, addNewCategory } from '../api/categories'
+import { Button } from 'react-bootstrap'
+import Typography from '@material-ui/core/Typography'
 
 class CategoryList extends React.Component {
   constructor (props) {
     super(props)
   this.state = {
-    categoryName: ''
+    categoryName: '',
+    userId: ''
   }
   this.handleChange = this.handleChange.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,38 +29,53 @@ class CategoryList extends React.Component {
   handleSubmit (e) {
     const newCategory = {
       categoryName: this.state.categoryName,
+      userId: this.props.userDetails.id
     }
-    addCategory(newCategory)
+    this.props.dispatch(addNewCategory(newCategory))
   }
 
   render () {
-    const { categories } = this.props
+    const { categories, userDetails} = this.props
     return (
       <React.Fragment>
-        <h1>Categories:</h1>
-        {categories.map(category => {
-          return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
-        })}
-        <form>
-          <label>
-            New Category:
-            <input name='categoryName'
-          placeholder='New Category'
-          value={this.state.categoryName}
-          onChange={this.handleChange}
-        />
-          </label>
-          <button type='button' onClick={() => this.handleSubmit()}>Add New Category</button>
-        </form>
-        </React.Fragment>
-    )
+        <div className='container is-fluid has-text-centered'>
+          <h1 className='title is-1'>
+          Subjects
+          </h1>
+            {categories.map(category => {
+              if (category.userId === userDetails.id) {
+                return <React.Fragment>
+                        <Link to={`/cardlist/${category.id}`}
+                              key={category.id}>
+                          <div key={category.id} className='container has-text-centered'>
+                          <Button id='menuButton' variant="primary" size="lg" block>
+                          <Typography variant='h3' id='menuText'>{category.categoryName}</Typography>
+                          </Button>
+                          </div>
+                  <br />
+                  </Link>
+              
+                </React.Fragment>
+
+                }
+            })} 
+          <br />
+          <form>
+            <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
+              name="categoryName" placeholder ='New Category' value={this.state.categoryName} onChange={this.handleChange} /> <br /> <br />
+           <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Add new subject</Button><br /> <br />
+          </form>
+        </div>
+      </React.Fragment>
+      
+    ) 
   }
 }
 
 function mapStateToProps (state) {
   return {
-    categories: state.categories,
-    userDetails: state.userDetails
+    userDetails: state.userDetails,
+    categories: state.categories
   }
 }
 

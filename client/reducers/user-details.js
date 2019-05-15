@@ -4,16 +4,16 @@ import {
   RECEIVE_USER_DETAILS
 } from '../actions/auth'
 
-const userDetails = (state = null, action) => {
+const userDetails = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USER_DETAILS:
       return action.details
 
     case REQUEST_USER_DETAILS:
-      return null
+      return {}
 
     case LOG_OFF:
-      return null
+      return {}
 
     default:
       return state

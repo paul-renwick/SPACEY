@@ -25,6 +25,7 @@ function getCategory (id, db = connection) {
 function addCategory (newCategory, db = connection) {
   return db('categories')
     .insert(newCategory)
+    .then(() => db('categories').select())
 }
 
 function submitCategories (submission, db = connection) {

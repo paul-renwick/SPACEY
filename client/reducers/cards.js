@@ -1,7 +1,7 @@
 import {
   REQUEST_CARDS,
   RECEIVE_CARDS,
-  addCard
+  ADD_CARD
 } from '../actions/cards'
 
 const cards = (cards = [], action) => {
@@ -11,6 +11,12 @@ const cards = (cards = [], action) => {
 
     case RECEIVE_CARDS:
       return action.cards
+
+    case ADD_CARD:
+    return [
+      ...cards,
+      action.content
+    ]
 
     default:
       return cards
