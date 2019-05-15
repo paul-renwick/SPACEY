@@ -9,8 +9,7 @@ class Header extends React.Component {
     return
   } else {
    return <React.Fragment>
-    <h3>{this.props.userDetails.username}</h3><br />
-   <Link to='/'><h3>Log out</h3></Link>
+    <Link to='/'><h3 id='loggedName'>{this.props.userDetails.username} / Log out</h3></Link>
    </React.Fragment>
     }
 }

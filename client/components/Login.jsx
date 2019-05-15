@@ -5,8 +5,6 @@ import { withRouter, Link } from 'react-router-dom'
 import { signIn } from '../actions/auth'
 import { clearError } from '../actions/error'
 import { Button } from 'react-bootstrap'
-import { Segment, Container, Header } from 'semantic-ui-react'
-
 
 class Login extends React.Component {
   state = {
@@ -73,7 +71,7 @@ class Login extends React.Component {
                   <p>
                   The difficulty of spaced repetition is not effort but that it requires forward planning and a small investment of time to set up a system. But in the long run, it saves us time as we retain information and spend less total time learning.
                   </p>
-                  <p><Link to='/events/new'>Register for an account now</Link></p>
+                  <p><Link to='/register'>Register for an account now</Link></p>
                   <p>Scientific background: <a href='https://fs.blog/2018/12/spacing-effect/' target='_blank' rel="noopener noreferrer">the spacing effect</a></p>
                 </h2>
             </div>
