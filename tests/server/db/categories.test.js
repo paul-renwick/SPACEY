@@ -1,5 +1,5 @@
 const env = require('./test-environment')
-const db = require('../../../server/db/cards')
+const db = require('../../../server/db/categories')
 
 let testDb = null
 
@@ -10,10 +10,9 @@ beforeEach(() => {
 
 afterEach(() => env.cleanup(testDb))
 
-test('getCard returns an individual card', () => {
-  return db.getCard(1, testDb)
+test('getCategory returns an individual category', () => {
+  return db.getCategory(1, testDb)
     .then(test => {
-      expect(test.answer).toBe('4')
+      expect(test.id).toBe(1)
     })
 })
- 
