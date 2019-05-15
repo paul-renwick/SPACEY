@@ -6,7 +6,8 @@ module.exports = {
   getCategories,
   submitCategories,
   getCategory,
-  addCategory
+  addCategory,
+  deleteCategory
 }
 
 function getCategories (db = connection) {
@@ -31,4 +32,9 @@ function submitCategories (submission, db = connection) {
   return db('categories')
     .where({ userId: submission.userId })
     .update({ evidence: submission.evidence, date_modified: submission.date_modified })
+}
+function deleteCategory (id, db = connection) {
+  return db('categories')
+    .where('id', id)
+    .del()
 }

@@ -53,7 +53,7 @@ class CardList extends React.Component {
 
   flipper = (e) => {
     this.setState({
-      display: true || false
+      display: (this.state.display === true ? false : true)
     })
   }
 
@@ -90,7 +90,7 @@ class CardList extends React.Component {
 
               <Button size="lg"
                    onClick={() => this.handleSubmit()}>
-                   Tick
+                   I got it!
                    </Button>
                    {' '}
               <Link to={`/cardlist/${card.categoryId}`} key={card.id}>
