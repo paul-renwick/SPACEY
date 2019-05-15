@@ -45,13 +45,15 @@ class AddCard extends React.Component {
           <br />
             <form action='submit' name='AddCard'>
               <h1 className='title is-1'>Add New Flash Card</h1>
-                <input name='question'
+                <input style={{ textAlign:'center', borderColor:'lightblue' }}
+                  name='question'
                   placeholder='Question'
                   value={question}
                   onChange={this.handleChange}
                 />
                 <br /> <br />
-                <input name='answer'
+                <input style={{ textAlign:'center', borderColor:'lightblue' }}
+                  name='answer'
                   placeholder='Answer'
                   value={answer}
                   onChange={this.handleChange}
