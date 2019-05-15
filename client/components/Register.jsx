@@ -32,7 +32,7 @@ class Register extends React.Component {
       <React.Fragment>
         <div className='container is-fluid has-text-centered' >
           <br/> <br/>
-          <h3 className='title is-4'>Register</h3>
+          <h2 className='title is-2'>Register</h2>
           <form>
             <div className='register'>
                 <input style={{ textAlign: 'center', borderColor:'lightblue' }} 
