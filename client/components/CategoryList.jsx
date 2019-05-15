@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' 
 import { getCategories, addNewCategory } from '../api/categories'
 import { Button } from 'react-bootstrap'
+import Typography from '@material-ui/core/Typography'
 
 class CategoryList extends React.Component {
   constructor (props) {
@@ -38,17 +39,31 @@ class CategoryList extends React.Component {
     return (
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
-          <h1 className='title is-1'>Categories:</h1>
+          <h1 className='title is-1'>
+          Subjects
+          </h1>
             {categories.map(category => {
               if (category.userId === userDetails.id) {
-                return <p key={category.id}><Link to={`/cardlist/${category.id}`}>{category.categoryName}</Link></p>
+                return <React.Fragment>
+                        <Link to={`/cardlist/${category.id}`}
+                              key={category.id}>
+                          <div key={category.id} className='container has-text-centered'>
+                          <Button id='menuButton' variant="primary" size="lg" block>
+                          <Typography variant='h3' id='menuText'>{category.categoryName}</Typography>
+                          </Button>
+                          </div>
+                  <br />
+                  </Link>
+              
+                </React.Fragment>
+
                 }
             })} 
-          <br /> <br />
+          <br />
           <form>
             <input style={{ textAlign: 'center', borderColor: 'lightblue' }}
               name="categoryName" placeholder ='New Category' value={this.state.categoryName} onChange={this.handleChange} /> <br /> <br />
-           <Button type='button' onClick={() => this.handleSubmit()}>Add New Category</Button><br /> <br />
+           <Button size="lg" type='button' onClick={() => this.handleSubmit()}>Add new subject</Button><br /> <br />
           </form>
         </div>
       </React.Fragment>
@@ -63,6 +78,5 @@ function mapStateToProps (state) {
     categories: state.categories
   }
 }
-
 
 export default connect(mapStateToProps)(CategoryList)

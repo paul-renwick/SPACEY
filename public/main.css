@@ -1,32 +1,26 @@
-/*  
- body {
-  margin: 0; padding: 0;
-}
-
-body {
-  z-index: 5;
-  background: gray url("https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg") repeat 0 0;
-  width: 100%;
-  height: 1080px;
-  margin: 0;
-  text-align: center;
-  -webkit-animation: slide 50s linear infinite;
-}
-
-body h1 {
-  font-family: sans-serif;
-}
-
-@-webkit-keyframes slide {
-    from { background-position: 0 0; }
-    to { background-position: -400px 0; }
-}  */
-
 .hero-body {
   flex-grow: 1;
   flex-shrink: 0;
   padding: 0.5rem 1.5rem;
+  background-color: #007bff;
 }
+
+#indicator {
+  float: right;
+}
+
+.check {
+  float: right;
+}
+
+#flip {
+  float: right;
+}
+
+#menuText {
+  color: white
+}
+
 
 #headerIcon {
   float: left;
@@ -40,3 +34,17 @@ body h1 {
   float: right;
 }
 
+#menuText2 {
+  color: white
+}
+
+#menuButton {
+-webkit-box-shadow: 0px 29px 52px -8px rgba(0,0,0,0.63);
+-moz-box-shadow: 0px 29px 52px -8px rgba(0,0,0,0.63);
+box-shadow: 0px 29px 52px -8px rgba(0,0,0,0.63);
+}
+
+#cardDisplay {
+  margin: 70px;
+  padding: 20px;
+}

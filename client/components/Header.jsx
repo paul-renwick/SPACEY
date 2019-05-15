@@ -11,8 +11,7 @@ class Header extends React.Component {
     }
 }
 
-  render () {
-
+render () {
   return (
 <React.Fragment>
   
@@ -23,7 +22,6 @@ class Header extends React.Component {
   <br></br>
   </div>
 </section>
-
 </React.Fragment>
 )
 }
