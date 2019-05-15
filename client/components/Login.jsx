@@ -31,18 +31,16 @@ class Login extends React.Component {
     const { username, password } = this.state
     return (
       <React.Fragment>
-      
           <br/> <br/>
       <div className='container is-fluid has-text-centered' >
       <h1 className='title is-1'>SPACEY</h1>
-
-         <img src='images/bigBlueLogo.png' style={{width: '200px'}} />
-          <h3 className='title is-4'>Login</h3>
+         <img src='images/bigBlueLogo.png' style={{width: '250px'}} />
+          <h3 className='frontTitle is-4 has-text-black'>Login</h3>
           <form>
             <div className='Login'> 
                 <input style={{ textAlign:'center', borderColor:'lightblue' }} 
                   name='username'
-                  placeholder ='username'
+                  placeholder ='Username'
                   value={username}
                   onChange={this.handleChange}
                 />
@@ -50,7 +48,7 @@ class Login extends React.Component {
                 <input style={{ textAlign:'center', borderColor:'lightblue' }}
                   name ='password'
                   type= 'password'
-                  placeholder = 'password'
+                  placeholder = 'Password'
                   value={password}
                   onChange={this.handleChange}
                 />
