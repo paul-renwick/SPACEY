@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { getCards, updateCard } from '../api/cards'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
-import FlipMove from 'react-flip-move'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -65,12 +64,10 @@ class CardList extends React.Component {
           {this.props.cards.map(card => {
             if (card.id == this.props.match.params.id) {
               return (
-              <React.Fragment>
-                <ul className='theList'>
-                  <FlipMove duration={10000} easing='easing-in' enterAnimation='fade'>
-                      <Card id='cardDisplay' key={card.id}
+              <React.Fragment key={card.id}>
+                      <Card id='cardDisplay' 
                         elevation={10}>
-                      <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' }>
+                      <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' } >
                       </CardHeader>
 
                           <Typography color='primary'
@@ -87,8 +84,6 @@ class CardList extends React.Component {
                           </Button>
                           </CardActions>
                       </Card>
-                    </FlipMove>
-                  </ul>
                 <br /> 
                <div style={{ textAlign: 'center' }} >
 

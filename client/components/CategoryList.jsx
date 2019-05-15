@@ -47,12 +47,11 @@ class CategoryList extends React.Component {
           </h1>
             {categories.map(category => {
               if (category.userId === userDetails.id) {
-                return <React.Fragment>
+                return <React.Fragment key={category.id}>
                   <ul className='theList'>
-                    <FlipMove duration={1200} easing='easing-in' enterAnimation='fade'>
-                      <Link to={`/cardlist/${category.id}`}
-                              key={category.id}>
-                          <div key={category.id} className='container has-text-centered'>
+                    <FlipMove duration={1200} easing='easing-in' enterAnimation='fade' key={category.id}>
+                      <Link to={`/cardlist/${category.id}`} >
+                          <div className='container has-text-centered'>
                           <Button id='menuButton' variant="primary" size="lg" block>
                           <Typography variant='h3' id='menuText'>{category.categoryName}</Typography>
                           </Button>

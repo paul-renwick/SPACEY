@@ -39,12 +39,11 @@ class CardList extends React.Component {
             {this.props.cards.map(card => {
               if (card.categoryId == this.props.match.params.id) {
                 return (
-                  <React.Fragment>
-                    <ul className='theList'>
+                  <React.Fragment key={card.id}>
+                    <ul  className='theList'>
                       <FlipMove duration={1200} easing='easing-in' enterAnimation='fade'>
-                        <Link to={`/display/${card.id}`}
-                        key={card.id}>
-                        <div key={card.id} className='container has-text-centered'>
+                        <Link to={`/display/${card.id}`}>
+                        <div className='container has-text-centered'>
                         <Button variant="primary" size="lg" id='menuButton' block>
                         <Typography variant='h3' id='menuText2'>{card.question}{this.checkDateCreated(card)}</Typography>
                         </Button>
