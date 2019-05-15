@@ -64,27 +64,26 @@ class CardList extends React.Component {
           {this.props.cards.map(card => {
             if (card.id == this.props.match.params.id) {
               return (
-              <React.Fragment>
-                <Card id='cardDisplay' key={card.id}
-                  elevation={10}>
-                <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' }>
-                </CardHeader>
+              <React.Fragment key={card.id}>
+                      <Card id='cardDisplay' 
+                        elevation={10}>
+                      <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' } >
+                      </CardHeader>
 
-                <Typography color='primary'
-                align='center'
-                 variant="h1"
-                  component="h1"
-                  p={10}
-                  m={10}>
-                  {this.state.display === true  ? card.answer : card.question }
-                </Typography>
-                <CardActions>
-                  <Button id='flip' onClick={this.flipper}>
-                  Flip
-                  </Button>
-                  </CardActions>
-                </Card>
-
+                          <Typography color='primary'
+                          align='center'
+                          variant="h1"
+                            component="h1"
+                            p={10}
+                            m={10}>
+                            {this.state.display === true  ? card.answer : card.question }
+                          </Typography>
+                          <CardActions>
+                          <Button id='flip' onClick={this.flipper}>
+                          Flip
+                          </Button>
+                          </CardActions>
+                      </Card>
                 <br /> 
                <div style={{ textAlign: 'center' }} >
 
