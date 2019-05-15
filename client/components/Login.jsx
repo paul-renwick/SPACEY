@@ -62,19 +62,10 @@ class Login extends React.Component {
         <br /><br /><br /><br />
         <section className='hero'>
         
-      {/* <section className='section' style={ {
-        // textAlign: 'start',
-        // padding: '3em 0em',
-        // borderWidth: '0px',
-        // borderRadius: '0px'
-      } }> */}
-          {/* <div className='hero-body has-background-grey-lighter' id="blurb" > */}
+
           <div className='hero-body has-background-grey-lighter' id="blurb">
           <br />
             <div className='container'>
-                {/* <Header as='h3' style={{ fontSize: '2em' }}>
-                  What is <em>SPACEY?</em>
-                </Header> */}
                 <h1 className='title'>What is <em>SPACEY?</em></h1>
                 <h2 className='subtitle'>
                   <p>Welcome to SPACEY the world leader in spaced repition learning! What is spaced repition learning, you may ask? The spacing effect is a far more effective way to learn and retain information that works with our brain instead of against it.</p>

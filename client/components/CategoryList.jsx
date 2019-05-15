@@ -39,6 +39,7 @@ class CategoryList extends React.Component {
     return (
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
+         <br />
           <h1 className='title is-1'>
           Subjects
           </h1>
