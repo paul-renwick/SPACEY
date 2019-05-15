@@ -66,7 +66,7 @@ class Login extends React.Component {
             <div className='container'>
                 <h1 className='title'>What is <em>SPACEY?</em></h1>
                 <h2 className='subtitle'>
-                  <p>Welcome to SPACEY the world leader in spaced repition learning! What is spaced repition learning, you may ask? The spacing effect is a far more effective way to learn and retain information that works with our brain instead of against it.</p>
+                  <p>Welcome to SPACEY the world leader in spaced repetition learning! What is spaced repetition learning, you may ask? The spacing effect is a far more effective way to learn and retain information that works with our brain instead of against it.</p>
                   <p>With properly spaced repetition, you increase the intervals of time between learning attempts. Each learning attempt reinforces the neural connections. For example, we learn a list better if we repeatedly study it over a period of time than if we tackle it in one single burst. We’re actually more efficient this way. Spaced sessions allow us to invest less total time to memorize than one single session, whereas we might get bored while going over the same material again and again in a single session. Of course, when we’re bored we pay less and less attention.</p>
                   <p>
                   The difficulty of spaced repetition is not effort but that it requires forward planning and a small investment of time to set up a system. But in the long run, it saves us time as we retain information and spend less total time learning.
