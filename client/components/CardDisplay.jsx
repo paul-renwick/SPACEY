@@ -53,7 +53,7 @@ class CardList extends React.Component {
 
   flipper = (e) => {
     this.setState({
-      display: true || false
+      display: (this.state.display === true ? false : true)
     })
   }
 
