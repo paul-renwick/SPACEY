@@ -31,7 +31,7 @@ class Register extends React.Component {
     return (
       <React.Fragment>
         <div className='container is-fluid has-text-centered' >
-          {/* <br/> <br/> */}
+          <br/> <br/>
           <h2 className='title is-2'>Register</h2>
           <form>
             <div className='register'>
