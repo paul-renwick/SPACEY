@@ -61,7 +61,18 @@ class AddCard extends React.Component {
                 {''}<Link to={`/cardlist/${this.props.match.params.id}`} ><Button size="lg" type='button'>Return to card list</Button></Link>
             </form>
         </div>
-        
+        <br />
+        <section className='hero'>
+        <div className='hero-body has-background-grey-lighter' id="blurb">
+          <br />
+            <div className='container'>
+                <h2 className='subtitle'>
+                  <p>Flash cards are one of the classic study tools, and for good reason – they promote studying through active recall, which is one of the practices through which our brains learn most effectively.</p>
+                  <p><b><em>SPACEY</em></b> uses your self-reported confidence in each flashcard to determine how frequently to repeat it. This optimizes the interval between each flashcard's repetition, thus maximizing the amount of knowledge that you can learn (or solidify) given a fixed amount of study time.</p>
+                </h2>
+            </div>
+          </div>
+        </section>
       </React.Fragment>
     )
   }
