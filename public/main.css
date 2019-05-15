@@ -21,6 +21,19 @@
   color: white
 }
 
+
+#headerIcon {
+  float: left;
+}
+
+#headerLogOut {
+  float: right;
+}
+
+#headerUserName {
+  float: right;
+}
+
 #menuText2 {
   color: white
 }
