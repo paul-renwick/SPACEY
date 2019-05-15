@@ -32,9 +32,9 @@ class CardList extends React.Component {
     return (
       <React.Fragment>
         <div className='container is-fluid has-text-centered'>
+        <br />
         <div className='cardList'>
-{            <h1 className='title is-1'>{this.title[0].categoryName}</h1>
-}            
+          {<h1 className='title is-1'>{this.title[0].categoryName}</h1>}            
             {this.props.cards.map(card => {
               if (card.categoryId == this.props.match.params.id) {
                 return (
