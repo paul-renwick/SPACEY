@@ -16,3 +16,10 @@ test('getCategory returns an individual category', () => {
       expect(test.id).toBe(1)
     })
 })
+
+test('getCategories returns a list of all categories', () => {
+  return db.getCategories(testDb)
+    .then(categories => {
+      expect(categories.length).toBe(5)
+    })
+})
