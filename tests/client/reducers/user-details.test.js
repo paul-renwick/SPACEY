@@ -12,25 +12,25 @@ test('userDetails returns user details during RECEIVE_USER_DETAILS', () => {
     userDetails: { name: 'test name' }
   }
   const newState = userDetails(currentState, action)
-  expect(newState).toBe(action.userDetails)
+  expect(newState).toBe(action.Details)
 })
 
-test('userDetails returns null during REQUEST_USER_DETAILS', () => {
-  const currentState = { name: 'test name' }
+test('userDetails returns {} during REQUEST_USER_DETAILS', () => {
+  const currentState = {name: 'test name' }
   const action = {
     type: REQUEST_USER_DETAILS
   }
   const newState = userDetails(currentState, action)
-  expect(newState).toBeNull()
+  expect(newState).toStrictEqual({})
 })
 
-test('userDetails returns null during LOG_OFF', () => {
+test('userDetails returns {} during LOG_OFF', () => {
   const currentState = { name: 'test name' }
   const action = {
     type: LOG_OFF
   }
   const newState = userDetails(currentState, action)
-  expect(newState).toBeNull()
+  expect(newState).toStrictEqual({})
 })
 
 test('activeEvent returns the current state by default', () => {
