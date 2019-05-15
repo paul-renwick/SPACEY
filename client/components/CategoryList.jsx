@@ -2,8 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' 
 import { getCategories, addNewCategory } from '../api/categories'
-import { Button } from 'react-bootstrap'
 import Typography from '@material-ui/core/Typography'
+import { Button } from 'react-bootstrap'
+import FlipMove from 'react-flip-move'
+
 
 class CategoryList extends React.Component {
   constructor (props) {
@@ -46,16 +48,19 @@ class CategoryList extends React.Component {
             {categories.map(category => {
               if (category.userId === userDetails.id) {
                 return <React.Fragment>
-                        <Link to={`/cardlist/${category.id}`}
+                  <ul className='theList'>
+                    <FlipMove duration={1200} easing='easing-in' enterAnimation='fade'>
+                      <Link to={`/cardlist/${category.id}`}
                               key={category.id}>
                           <div key={category.id} className='container has-text-centered'>
                           <Button id='menuButton' variant="primary" size="lg" block>
                           <Typography variant='h3' id='menuText'>{category.categoryName}</Typography>
                           </Button>
                           </div>
-                  <br />
-                  </Link>
-              
+                          <br />
+                      </Link>
+                    </FlipMove>
+                  </ul>
                 </React.Fragment>
 
                 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getCards, updateCard } from '../api/cards'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+import FlipMove from 'react-flip-move'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -65,26 +66,29 @@ class CardList extends React.Component {
             if (card.id == this.props.match.params.id) {
               return (
               <React.Fragment>
-                <Card id='cardDisplay' key={card.id}
-                  elevation={10}>
-                <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' }>
-                </CardHeader>
+                <ul className='theList'>
+                  <FlipMove duration={10000} easing='easing-in' enterAnimation='fade'>
+                      <Card id='cardDisplay' key={card.id}
+                        elevation={10}>
+                      <CardHeader align='left' title={this.state.display === true  ? 'Answer' : 'Question' }>
+                      </CardHeader>
 
-                <Typography color='primary'
-                align='center'
-                 variant="h1"
-                  component="h1"
-                  p={10}
-                  m={10}>
-                  {this.state.display === true  ? card.answer : card.question }
-                </Typography>
-                <CardActions>
-                  <Button id='flip' onClick={this.flipper}>
-                  Flip
-                  </Button>
-                  </CardActions>
-                </Card>
-
+                          <Typography color='primary'
+                          align='center'
+                          variant="h1"
+                            component="h1"
+                            p={10}
+                            m={10}>
+                            {this.state.display === true  ? card.answer : card.question }
+                          </Typography>
+                          <CardActions>
+                          <Button id='flip' onClick={this.flipper}>
+                          Flip
+                          </Button>
+                          </CardActions>
+                      </Card>
+                    </FlipMove>
+                  </ul>
                 <br /> 
                <div style={{ textAlign: 'center' }} >
 
