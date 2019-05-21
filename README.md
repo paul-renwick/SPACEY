@@ -1,7 +1,9 @@
 # Spacey Group Project
 
-Readme for Spacey Group project
+A group project from my time at Enspiral Dev Academy
 
-Please visit the Wiki page for more information. 
+The goal of the project was to make a web app that utilized spaced interval learning. The process whereby retention of information is increased by reviewing facts and information over progressively spaced interals. 
+
+In order to run the project, clone and then npm i. 
 
 https://github.com/kahikatea-2019/SPACEY/wiki
